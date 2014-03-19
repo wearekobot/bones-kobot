@@ -1,0 +1,101 @@
+/******************************************************************
+
+Base Styles
+
+Site Name:
+Author:
+
+*Variables in this file are defined in framework/_variables*
+
+******************************************************************/
+
+body {
+    background-color: $color-background;
+    color: $color-foreground;
+    font-size: $font-size-mobile;
+    font-family: $font-default;
+    line-height: $line-height;
+    position: relative;
+    @include breakpoint($bkpt-768){
+    	font-size: $font-size;
+    }
+    @include breakpoint($bkpt-1280){
+    	font-size: $font-size-large;
+    }
+}
+
+#content{
+	padding: 0 $mobile-padding;
+}
+// Links
+
+a, a:visited{
+	color: $link-color;
+	text-decoration:none;
+	&:hover{
+		color: $link-hover;
+	}
+}
+
+
+// Selection Styling
+
+::selection {
+	background: $color-highlight-backgound;
+	color: $color-highlight-foregound;
+}
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+h1, h2, h3, h4, h5 {
+	font-family: $font-default;
+	text-rendering: optimizelegibility;
+	font-weight: 400;
+	/*
+	if you're going to use webfonts, be sure to check your weights
+	http://css-tricks.com/watch-your-font-weight/
+	*/
+
+	/* removing text decoration from all headline links */
+	a {
+		text-decoration: none;
+	}
+}
+
+h1{
+	margin: 0;
+	font-weight: 200;
+	font-size: 3em;
+	line-height: 1.333em;
+}
+
+h2{
+	margin-top: 0;
+	margin-bottom: 0em;
+	font-weight: 200;
+	font-size: 1.75em;
+	line-height: 1.4em;
+}
+
+h3{
+	font-size: 1.125em;
+}
+
+h4{
+	font-weight: 700;
+	font-size: 1.1em;
+}
+
+h5{
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 0.846em;
+	line-height: 2.09em;
+}
+
+
+p, ul{
+	font-weight: 400;
+}

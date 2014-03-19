@@ -1,0 +1,119 @@
+/******************
+
+Forms
+
+******************/
+
+
+
+// Placeholder Styling
+
+::-webkit-input-placeholder { /* WebKit browsers */
+	font-family: $font-default;
+	text-transform: uppercase;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	font-family: $font-default;
+	text-transform: uppercase;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	font-family: $font-default;
+	text-transform: uppercase;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+	font-family: $font-default;
+	text-transform: uppercase;
+}
+
+form{
+	fieldset{
+		border:none;
+		padding:0;
+	}
+	label{
+		// display:inline-block;
+		// width:20%;
+		// padding:0.25em 0.35em 0.25em 0;
+		// background-color:darken($color-foreground, 5);
+		// height:2.5em;
+		// margin:0;
+		// float:left;
+		// line-height:2em;
+		// color:$color-foreground;
+		// font-weight:600;
+		// letter-spacing:0.09em;
+		// text-align:right;
+		// -webkit-box-sizing: border-box;
+		// -moz-box-sizing: border-box;
+		// -o-box-sizing: border-box;
+		// -ms-box-sizing: border-box;
+		// box-sizing: border-box;
+		display: none;
+	}
+	.field-body label{
+		display:none;
+	}
+	.bbf-field, .bbf-editor{
+		margin-bottom:0.25em;
+//			overflow:hidden;
+		&:after{
+			content:"";
+			clear:both;
+			display:block;
+		}
+	}
+	.bbf-field{
+		height:3.6em;
+		margin-bottom:0.6em;
+	}
+	.bbf-error{
+		display: none;
+		input{
+			-moz-box-shadow:    inset 0 0 10px rgba(red, 0.5);
+			-webkit-box-shadow: inset 0 0 10px rgba(red, 0.5);
+			box-shadow:         inset 0 0 10px rgba(red, 0.5);
+		}
+		.bbf-error{
+			color:red;
+			font-size:0.8em;
+			margin-left:21%;
+		}
+	}
+	input[type="text"], input[type="email"], textarea{
+		font-family: $font-default;
+		background: $form-color-background;
+		color: $form-color;
+		display: block;
+		float:left;
+		// width: 80%;  // Unquote if you want to show the label next to the input
+		width:100%;
+		border:1px solid $form-color-border;
+		-webkit-appearance: none;
+	    border-radius: 0.125em;
+		height:2.5em;
+		padding:0.25em 0.1em 0.25em 0.5em;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		&:focus{
+			outline:none;
+			background:$form-color-background;
+		}
+	}
+	textarea{
+		height:8em;
+		width:100%;
+	}
+	input[type="submit"]{
+		float:right;
+		width:50%;
+		border:none;
+		background-color:$form-color-btn;
+		color:$form-color-btn-text;
+		text-transform: uppercase;
+		font-size:1.250em;
+		font-family: $font-default;
+	}
+}

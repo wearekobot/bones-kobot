@@ -1,0 +1,22 @@
+/******************
+
+Forms
+
+*Variables in this file are defined in framework/_variables*
+
+******************/
+
+.btn{
+	display: inline-block;
+	padding: 0.5em 1em;
+	border: 1px solid $color-btn-border;
+	border-radius: 0.25em;
+	background: $color-btn;
+	color: $color-btn-text;
+	text-transform: uppercase;
+	font-size:0.8em;
+	&:hover{
+		background: $color-btn-text;
+		color: $color-btn;
+	}
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Bones-Kobot",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/wearekobot/bones.git"
+  },
+  "version": "0.0.2",
+  "description": "A barebones starter template Kobot uses for Wordpress sites",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "Bones",
+    "Wordpress",
+    "Template"
+  ],
+  "author": "Stefan Duret",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "^0.7.2",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-bower-requirejs": "~0.4.1",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-coffeelint": "~0.0.8",
+    "grunt-contrib-coffee": "~0.8.2",
+    "bower": "~0.8.6",
+    "grunt-contrib-imagemin": "~0.1.4",
+    "grunt-svgmin": "~0.1.0",
+    "grunt-contrib-watch": "~0.5.1",
+    "load-grunt-tasks": "~0.2.0"
+  }
+}

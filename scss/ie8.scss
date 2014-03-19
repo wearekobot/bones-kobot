@@ -1,0 +1,68 @@
+/******************************************************************
+Site Name: 
+Author: Kobot
+
+Stylesheet: IE8 fallback Stylesheet
+
+******************************************************************/
+
+// Bring in the fancy/general purpose tools
+@import "compass";
+@import "breakpoint";
+// @import "compass-retina";
+@import "susy";
+
+
+
+// import normalize
+@import "vendors/normalize";
+
+// import variables
+@import "framework/variables";
+
+// import mixins
+@import "framework/mixins";
+
+
+// define Breakpoints
+$breakpoint-no-queries: false;
+$breakpoint-no-query-fallbacks: true;
+@import "framework/breakpoint";
+
+// define grid and dimensions
+@import "framework/grids";
+
+
+/*
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*/
+
+// styles in base.scss
+@import "framework/base";
+
+// styles in wordpress.scss
+// Using this in Wordpress? This has some common classes used
+// @import "wordpress";
+
+// styles in partials folder (assembles files with folder)
+@import "partials/partials";
+
+
+
+// override any of the vendor styles
+@import "vendors/overrides";
+
+
+
+/*
+PRINT STYLESHEET
+Feel free to customize this. Remember to add things that won't make
+sense to print at the bottom. Things like nav, ads, and forms should
+be set to display none.
+*/
+@media print {
+	@import "print/print";
+}

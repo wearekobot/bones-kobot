@@ -1,0 +1,94 @@
+/******************
+
+Site-wide Variables
+
+******************/
+
+
+/*
+
+COLORS
+
+ */
+
+
+// Website Colors
+$color-foreground: #000000;
+$color-background: #ffffff;
+
+
+$color-highlight-foregound: $color-background;
+$color-highlight-backgound: $color-foreground;
+
+$link-color:        $color-foreground;
+$link-hover:        darken($link-color, 9%);
+
+//Borders
+$color-border: $color-foreground; // Setting up the default border colour used in buttons, forms, etc. (as defined /modules/_forms.scss)
+
+
+//Buttons 
+$color-btn: $color-background; // Setting up the default color for the colour of buttons (as defined in /modules/_btn.scss)
+$color-btn-text: $color-foreground;
+$color-btn-border: $color-border; //by default, this is the same as the general border definition
+
+// Forms
+$form-color: $color-foreground;
+$form-color-background: $color-background;
+$form-color-border: lighten($color-foreground, 50);
+$form-color-btn: $color-btn;
+$form-color-btn-text: $color-background;
+
+
+// Alert Colors
+
+$alert-yellow:      #ebe16f;
+$alert-red:         #fbe3e4;
+$alert-green:       #e6efc2;
+$alert-blue:        #d5edf8;
+
+
+/*
+
+Typography
+
+*/
+$font-size-mobile: 18px;
+$font-size: 21px;
+$font-size-large: 24px;
+$line-height: 1.4em;
+$font-default: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-default-second:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// $sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+// $serif:             "Georgia", Cambria, Times New Roman, Times, serif;
+
+
+/* 	To embed your own fonts, use this syntax
+	and place your fonts inside the
+	library/fonts folder. For more information
+	on embedding fonts, go to:
+	http://www.fontsquirrel.com/
+	Be sure to remove the comment brackets.
+*/
+
+/*	@font-face {
+    	font-family: 'Font Name';
+    	src: url('library/fonts/font-name.eot');
+    	src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
+             url('library/fonts/font-name.woff') format('woff'),
+             url('library/fonts/font-name.ttf') format('truetype'),
+             url('library/fonts/font-name.svg#font-name') format('svg');
+    	font-weight: normal;
+    	font-style: normal;
+	}
+*/
+
+/*
+Inital Setup Variables
+
+ */
+
+$mobile-padding: 1em; //the initial padding for the website in mobile
+
+
