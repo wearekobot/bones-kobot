@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 					cssDir: 'css',
 					imagesDir: 'images',
 					javascriptsDir: 'js',
-					relativeAssets: false,
+					relativeAssets: true,
 					// httpImagesPath: '<%= bones.theme %>/images',
 					// httpGeneratedImagesPath: '<%= bones.theme %>/images/generated',
 					outputStyle: 'expanded',
