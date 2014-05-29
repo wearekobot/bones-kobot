@@ -187,3 +187,14 @@ function fix_blog_link_on_cpt( $classes, $item, $args ) {
 	return $classes;
 }
 add_filter('nav_menu_css_class', 'fix_blog_link_on_cpt', 10, 3);
+
+
+// Add Page Slug Body Class
+function add_slug_body_class($classes) {
+	global $post;
+	if (isset($post)) {
+		$classes[] = $post->post_type . '-' . $post->post_name;
+	}
+	return $classes;
+}
+add_filter('body_class', 'add_slug_body_class');
