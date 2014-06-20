@@ -1,5 +1,6 @@
-			<footer class="footer" role="contentinfo">
-				<div id="inner-footer" class="wrap clearfix">
+			<footer class="footer">
+				<div id="inner-footer">
+					<h1><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 					<nav role="navigation">
 						<?php bones_footer_links(); ?>
 					</nav>
