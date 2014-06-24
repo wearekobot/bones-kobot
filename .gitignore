@@ -53,3 +53,6 @@ temp/
 .Trashes
 
 .svn
+
+js/vendor
+css/*.css
