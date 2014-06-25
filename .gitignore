@@ -55,4 +55,5 @@ temp/
 .svn
 
 js/vendor
+js/*.js
 css/*.css

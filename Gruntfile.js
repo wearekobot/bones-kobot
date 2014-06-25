@@ -90,14 +90,15 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Require config
-		requirejs : {
-			production : {
-				options : {
-					name : 'global',
-					baseUrl : 'js',
-					mainConfigFile : 'js/global.js',
-					out : 'js/plugins.min.js'
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> lib - v<%= pkg.version %> -' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
+			},
+			dist: {
+				files: {
+					'js/plugins.min.js': [
+						'js/vendor/jquery/jquery.js'
+					]
 				}
 			}
 		},
@@ -141,7 +142,7 @@ module.exports = function(grunt) {
 		'coffee', 
 		'imagemin:production', 
 		'svgmin:production', 
-		'requirejs:production'
+		'uglify'
 	]);
 
 	// Template Setup Task
