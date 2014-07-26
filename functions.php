@@ -32,7 +32,7 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 	- adding custom login css
 	- changing text in footer of admin
 */
-// require_once( 'library/admin.php' ); // this comes turned off by default
+require_once( 'library/admin.php' ); // this comes turned off by default
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 

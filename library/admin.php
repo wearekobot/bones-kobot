@@ -19,15 +19,17 @@ Digging into WP - http://digwp.com/2010/10/customize-wordpress-dashboard/
 
 // disable default dashboard widgets
 function disable_default_dashboard_widgets() {
-	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );    // Right Now Widget
+	remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );    // Right Now Widget
 	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' ); // Comments Widget
 	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' );  // Incoming Links Widget
 	remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' );         // Plugins Widget
 
-	// remove_meta_box('dashboard_quick_press', 'dashboard', 'core' );   // Quick Press Widget
+	remove_meta_box('dashboard_quick_press', 'dashboard', 'core' );   // Quick Press Widget
 	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' );   // Recent Drafts Widget
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'core' );         //
 	remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' );       //
+	remove_meta_box( 'dashboard_activity', 'dashboard', 'core' );       // Activity Widget
+
 
 	// removing plugin dashboard boxes
 	remove_meta_box( 'yoast_db_widget', 'dashboard', 'normal' );         // Yoast's SEO Plugin Widget
@@ -39,6 +41,8 @@ function disable_default_dashboard_widgets() {
 	https://github.com/eddiemachado/bones/issues
 	*/
 }
+
+
 
 /*
 Now let's talk about adding your own custom Dashboard widget.
@@ -73,13 +77,39 @@ function bones_rss_dashboard_widget() {
 	<?php }
 }
 
+//welcome widget
+function bones_welcomevideo_dashboard_widget() {
+	echo "<div class=\"videoWrapper\"><iframe width=\"640\" height=\"360\" src=\"//www.youtube.com/embed/6PKQE8FM2Uw\" frameborder=\"0\" allowfullscreen></iframe></div>";
+}
+
+// Manual Widget
+function bones_manual_dashboard_widget() {
+	echo '
+		<p>If you need any help with the site, first download and consult the <a href="#">manual</a>.</p>
+		<p>Should the manual not cover the problem, <a href="mailto:info@kobot.ca">drop us an email at info@kobot.ca!</a></p>
+
+	';
+}
+
+// Kobot widget
+function bones_Kobot_dashboard_widget() {
+	echo '
+		<p>This site was lovingly built by Bryan Kulba, Stefan Duret and Bryan Birtles at Kobot Industries Ltd. in Edmonton, Alberta</p>
+
+	';
+}
+
 // calling all custom dashboard widgets
 function bones_custom_dashboard_widgets() {
-	wp_add_dashboard_widget( 'bones_rss_dashboard_widget', __( 'Recently on Themble (Customize on admin.php)', 'bonestheme' ), 'bones_rss_dashboard_widget' );
+	// wp_add_dashboard_widget( 'bones_rss_dashboard_widget', __( 'Recently on Themble (Customize on admin.php)', 'bonestheme' ), 'bones_rss_dashboard_widget' );
 	/*
 	Be sure to drop any other created Dashboard Widgets
 	in this function and they will all load.
 	*/
+
+	wp_add_dashboard_widget( 'bones_welcomevideo_dashboard_widget', __( 'We did it!!!', 'bonestheme' ), 'bones_welcomevideo_dashboard_widget' );
+	wp_add_dashboard_widget( 'bones_manual_dashboard_widget', __( 'Questions? Are you stuck?', 'bonestheme' ), 'bones_manual_dashboard_widget' );
+	wp_add_dashboard_widget( 'bones_kobot_dashboard_widget', __( 'Credits', 'bonestheme' ), 'bones_kobot_dashboard_widget' );
 }
 
 
@@ -110,6 +140,17 @@ add_action( 'login_enqueue_scripts', 'bones_login_css', 10 );
 add_filter( 'login_headerurl', 'bones_login_url' );
 add_filter( 'login_headertitle', 'bones_login_title' );
 
+/************* CUSTOM Admin Styles *****************/
+
+add_action( 'admin_enqueue_scripts', 'load_admin_style' );
+
+function load_admin_style() {
+	wp_enqueue_style( 'admin_css', get_template_directory_uri() . '/css/admin-style.css', false, '1.0.0' );
+}
+
+
+
+
 
 /************* CUSTOMIZE ADMIN *******************/
 
@@ -122,7 +163,7 @@ you like.
 
 // Custom Backend Footer
 function bones_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.', 'bonestheme' );
+	_e( '<span id="footer-thankyou">Developed by <a href="http://www.kobot.ca" target="_blank">www.kobot.ca</a></span>.', 'bonestheme' );
 }
 
 // adding it to the admin area
