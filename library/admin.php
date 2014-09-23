@@ -107,7 +107,7 @@ function bones_custom_dashboard_widgets() {
 	in this function and they will all load.
 	*/
 
-	wp_add_dashboard_widget( 'bones_welcomevideo_dashboard_widget', __( 'We did it!!!', 'bonestheme' ), 'bones_welcomevideo_dashboard_widget' );
+	// wp_add_dashboard_widget( 'bones_welcomevideo_dashboard_widget', __( 'We did it!!!', 'bonestheme' ), 'bones_welcomevideo_dashboard_widget' );
 	wp_add_dashboard_widget( 'bones_manual_dashboard_widget', __( 'Questions? Are you stuck?', 'bonestheme' ), 'bones_manual_dashboard_widget' );
 	wp_add_dashboard_widget( 'bones_kobot_dashboard_widget', __( 'Credits', 'bonestheme' ), 'bones_kobot_dashboard_widget' );
 }
