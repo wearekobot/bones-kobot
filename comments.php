@@ -19,12 +19,12 @@ The comments page for Bones
 <?php // You can start editing here. ?>
 
 <?php if ( have_comments() ) : ?>
-	<h3 id="comments" class="h2"><?php comments_number( __( '<span>No</span> Responses', 'bonestheme' ), __( '<span>One</span> Response', 'bonestheme' ), _n( '<span>%</span> Response', '<span>%</span> Responses', get_comments_number(), 'bonestheme' ) );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
+	<h3 id="comments"><?php comments_number( __( '<span>No</span> Responses', 'bonestheme' ), __( '<span>One</span> Response', 'bonestheme' ), _n( '<span>%</span> Response', '<span>%</span> Responses', get_comments_number(), 'bonestheme' ) );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
 
 	<nav id="comment-nav">
-		<ul class="clearfix">
-				<li><?php previous_comments_link() ?></li>
-				<li><?php next_comments_link() ?></li>
+		<ul>
+			<li><?php previous_comments_link() ?></li>
+			<li><?php next_comments_link() ?></li>
 		</ul>
 	</nav>
 
@@ -33,9 +33,9 @@ The comments page for Bones
 	</ol>
 
 	<nav id="comment-nav">
-		<ul class="clearfix">
-				<li><?php previous_comments_link() ?></li>
-				<li><?php next_comments_link() ?></li>
+		<ul>
+			<li><?php previous_comments_link() ?></li>
+			<li><?php next_comments_link() ?></li>
 		</ul>
 	</nav>
 
@@ -58,7 +58,7 @@ The comments page for Bones
 
 <section id="respond" class="respond-form">
 
-	<h3 id="comment-form-title" class="h2"><?php comment_form_title( __( 'Leave a Reply', 'bonestheme' ), __( 'Leave a Reply to %s', 'bonestheme' )); ?></h3>
+	<h3 id="comment-form-title"><?php comment_form_title( __( 'Leave a Reply', 'bonestheme' ), __( 'Leave a Reply to %s', 'bonestheme' )); ?></h3>
 
 	<div id="cancel-comment-reply">
 		<p class="small"><?php cancel_comment_reply_link(); ?></p>
@@ -78,7 +78,7 @@ The comments page for Bones
 
 	<?php else : ?>
 
-	<ul id="comment-form-elements" class="clearfix">
+	<ul id="comment-form-elements">
 
 		<li>
 			<label for="author"><?php _e( 'Name', 'bonestheme' ); ?> <?php if ($req) _e( '(required)'); ?></label>

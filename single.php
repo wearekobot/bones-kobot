@@ -9,7 +9,7 @@
 							?></p>
 						</header>
 						
-						<section class="entry-content clearfix" itemprop="articleBody">
+						<section class="entry-content" itemprop="articleBody">
 							<?php the_content(); ?>
 						</section>
 						
