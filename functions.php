@@ -198,3 +198,54 @@ function add_slug_body_class($classes) {
 	return $classes;
 }
 add_filter('body_class', 'add_slug_body_class');
+
+
+//remove stuff from admin bar
+function remove_admin_bar_links() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu('wp-logo');          // Remove the WordPress logo
+	$wp_admin_bar->remove_menu('about');            // Remove the about WordPress link
+	$wp_admin_bar->remove_menu('wporg');            // Remove the WordPress.org link
+	$wp_admin_bar->remove_menu('documentation');    // Remove the WordPress documentation link
+	$wp_admin_bar->remove_menu('support-forums');   // Remove the support forums link
+	$wp_admin_bar->remove_menu('feedback');         // Remove the feedback link
+	// $wp_admin_bar->remove_menu('site-name');        // Remove the site name menu
+	// $wp_admin_bar->remove_menu('view-site');        // Remove the view site link
+	$wp_admin_bar->remove_menu('updates');          // Remove the updates link
+	$wp_admin_bar->remove_menu('comments');         // Remove the comments link
+	$wp_admin_bar->remove_menu('new-content');      // Remove the content link
+	$wp_admin_bar->remove_menu('w3tc');             // If you use w3 total cache remove the performance link
+	// $wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
+}
+add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
+
+//remove comments from admin menu
+add_action( 'admin_menu', 'my_remove_menu_pages' );
+
+function my_remove_menu_pages() {
+    remove_menu_page('edit-comments.php');  
+}
+function custom_menu_order($menu_ord) {
+	if (!$menu_ord) {
+		return true;
+	}
+	
+	return array(
+		'index.php', // Dashboard
+		'separator1', // First separator
+		'edit.php', // blog Entries
+		'edit.php?post_type=page', // Pages
+		'upload.php', // Media
+		'link-manager.php', // Links
+		'edit-comments.php', // Comments
+		'separator2', // Second separator
+		'themes.php', // Appearance
+		'plugins.php', // Plugins
+		'users.php', // Users
+		'tools.php', // Tools
+		'options-general.php', // Settings
+		'separator-last', // Last separator
+	);
+}
+add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_order
+add_filter('menu_order', 'custom_menu_order');
