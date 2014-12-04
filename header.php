@@ -46,6 +46,7 @@
 					<?php // bloginfo('description'); ?>
 					<nav role="navigation">
 						<?php bones_main_nav(); ?>
+						<div class="navHamburger">&equiv;</div>
 					</nav>
 				</div>
 			</header>
