@@ -6,9 +6,6 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<?php // Google Chrome Frame for IE ?>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		
 		<title><?php $wp_title = wp_title('', false); if (!empty($wp_title)) : ?><?php wp_title(''); ?><?php else : ?><?php bloginfo('description'); ?><?php endif; ?> | <?php bloginfo('name'); ?></title>
 		
 		<?php // mobile meta (hooray!) ?>
