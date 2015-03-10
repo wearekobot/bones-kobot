@@ -223,29 +223,5 @@ add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 add_action( 'admin_menu', 'my_remove_menu_pages' );
 
 function my_remove_menu_pages() {
-    remove_menu_page('edit-comments.php');  
+	remove_menu_page('edit-comments.php');  
 }
-function custom_menu_order($menu_ord) {
-	if (!$menu_ord) {
-		return true;
-	}
-	
-	return array(
-		'index.php', // Dashboard
-		'separator1', // First separator
-		'edit.php', // blog Entries
-		'edit.php?post_type=page', // Pages
-		'upload.php', // Media
-		'link-manager.php', // Links
-		'edit-comments.php', // Comments
-		'separator2', // Second separator
-		'themes.php', // Appearance
-		'plugins.php', // Plugins
-		'users.php', // Users
-		'tools.php', // Tools
-		'options-general.php', // Settings
-		'separator-last', // Last separator
-	);
-}
-add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_order
-add_filter('menu_order', 'custom_menu_order');
