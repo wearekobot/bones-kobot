@@ -63,10 +63,10 @@ you like. Enjoy!
 add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
-    return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
-    ) );
+	return array_merge($sizes, array(
+		'bones-thumb-600' => '600px by 150px',
+		'bones-thumb-300' => '300px by 100px',
+	));
 }
 
 /*
@@ -90,71 +90,38 @@ function bones_register_sidebars() {
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',
 	));
-
-	/*
-	to add more sidebars or widgetized areas, just copy
-	and edit the above sidebar code. In order to call
-	your new sidebar just use the following code:
-
-	Just change the name to whatever your new
-	sidebar's id is, for example:
-
-	register_sidebar(array(
-		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'bonestheme' ),
-		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widgettitle">',
-		'after_title' => '</h4>',
-	));
-
-	To call the sidebar in your template, you can just copy
-	the sidebar.php file and rename it to your sidebar's name.
-	So using the above example, it would be:
-	sidebar-sidebar2.php
-
-	*/
-} // don't remove this bracket!
+}
 
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
 function bones_comments( $comment, $args, $depth ) {
-   $GLOBALS['comment'] = $comment; ?>
-	<li <?php comment_class(); ?>>
-		<article id="comment-<?php comment_ID(); ?>">
-			<header class="comment-author vcard">
-				<?php
-				/*
-					this is the new responsive optimized comment image. It used the new HTML5 data-attribute to display comment gravatars on larger screens only. What this means is that on larger posts, mobile sites don't have a ton of requests for comment images. This makes load time incredibly fast! If you'd like to change it back, just replace it with the regular wordpress gravatar call:
-					echo get_avatar($comment,$size='32',$default='<path_to_url>' );
-				*/
-				?>
-				<?php // custom gravatar call ?>
-				<?php
-					// create variable
-					$bgauthemail = get_comment_author_email();
-				?>
-				<img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/images/nothing.gif" />
-				<?php // end custom gravatar call ?>
-				<?php printf(__( '<cite class="fn">%s</cite>', 'bonestheme' ), get_comment_author_link()) ?>
-				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
-				<?php edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ?>
-			</header>
-			<?php if ($comment->comment_approved == '0') : ?>
-				<div class="alert alert-info">
-					<p><?php _e( 'Your comment is awaiting moderation.', 'bonestheme' ) ?></p>
-				</div>
-			<?php endif; ?>
-			<section class="comment_content">
-				<?php comment_text() ?>
-			</section>
-			<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-		</article>
-	<?php // </li> is added by WordPress automatically ?>
-<?php
-} // don't remove this bracket!
+	$GLOBALS['comment'] = $comment;
+	
+	$commentHtml = '';
+	$commentHtml .= '<li ' . comment_class('', null, null, false) . '>';
+	$commentHtml .= '<article id="comment-' . get_comment_ID() . '">';
+	$commentHtml .= '<header class="comment-author vcard">';
+	/*
+		this is the new responsive optimized comment image. It used the new HTML5 data-attribute to display comment gravatars on larger screens only. What this means is that on larger posts, mobile sites don't have a ton of requests for comment images. This makes load time incredibly fast! If you'd like to change it back, just replace it with the regular wordpress gravatar call:
+		echo get_avatar($comment,$size='32',$default='<path_to_url>' );
+	*/
+	$bgauthemail = get_comment_author_email();
+	$commentHtml .= '<img data-gravatar="http://www.gravatar.com/avatar/' . md5($bgauthemail) . '?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="'. get_template_directory_uri() .'/images/nothing.gif" />';
+	$commentHtml .= '<cite class="fn">' . get_comment_author_link() .'</cite>';
+	$commentHtml .= '<time datetime="' . get_comment_time('Y-m-j') . '"><a href="' . htmlspecialchars(get_comment_link($comment->comment_ID)) . '">' . get_comment_time('F jS, Y') . '</a></time>';
+	$commentHtml .= get_edit_comment_link('(Edit)', '  ', '');
+	$commentHtml .= '</header>';
+	if ($comment->comment_approved == '0') {
+		$commentHtml .= '<div class="alert alert-info"><p>Your comment is awaiting moderation.</p></div>';
+	}
+	$commentHtml .= '<section class="comment_content">';
+	$commentHtml .= get_comment_text();
+	$commentHtml .= '</section>';
+	$commentHtml .= get_comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth'])));
+	$commentHtml .= '</article>';
+	return $commentHtml;
+}
 
 /************* SEARCH FORM LAYOUT *****************/
 
@@ -166,7 +133,7 @@ function bones_wpsearch($form) {
 	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
 	</form>';
 	return $form;
-} // don't remove this bracket!
+}
 
 
 // When we're on custom post type archive-{}.php or single-{}.php pages
@@ -198,7 +165,6 @@ function add_slug_body_class($classes) {
 	return $classes;
 }
 add_filter('body_class', 'add_slug_body_class');
-
 
 //remove stuff from admin bar
 function remove_admin_bar_links() {
