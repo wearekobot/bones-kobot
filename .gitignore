@@ -57,3 +57,6 @@ temp/
 js/vendor
 js/*.js
 css/*.css
+Gemfile.lock
+.sass-cache
+node_modules
