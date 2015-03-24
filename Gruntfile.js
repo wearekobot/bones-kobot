@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 		watch : {
 			compass: {
 				files: ['scss/**/*.{scss,sass}'],
-				tasks: ['compass']
+				tasks: ['compass', 'autoprefixer']
 			},
 			coffee: {
 			  files: ['coffee/**/*.coffee'],
@@ -68,6 +68,20 @@ module.exports = function(grunt) {
 					outputStyle: 'expanded',
 					raw: 'extensions_dir = "_bower_components"\n'
 				}
+			}
+		},
+		
+		autoprefixer: {
+			options: {
+				browsers: ['last 2 versions']
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'css',
+					src: '**/*.css',
+					dest: 'css'
+				}]
 			}
 		},
 		
@@ -140,6 +154,7 @@ module.exports = function(grunt) {
 		'jshint', 
 		'compass', 
 		'coffee', 
+		'autoprefixer',
 		'imagemin:production', 
 		'svgmin:production', 
 		'uglify'
