@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					// If you're using global Sass gems, require them here.
-					require: ['compass-h5bp', 'breakpoint', 'susy'],
+					require: ['compass-h5bp', 'breakpoint', 'susy', 'bourbon'],
 					bundleExec: true,
 					sassDir: 'scss',
 					cssDir: 'css',
