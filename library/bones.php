@@ -17,37 +17,37 @@ right up top and clean.
 *********************/
 
 // we're firing all out initial functions at the start
-add_action( 'after_setup_theme', 'bones_ahoy', 16 );
+add_action('after_setup_theme', 'bones_ahoy', 16);
 
 function bones_ahoy() {
 
 	// launching operation cleanup
-	add_action( 'init', 'bones_head_cleanup' );
+	add_action('init', 'bones_head_cleanup');
 	// remove WP version from RSS
-	add_filter( 'the_generator', 'bones_rss_version' );
+	add_filter('the_generator', 'bones_rss_version');
 	// remove pesky injected css for recent comments widget
-	add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
+	add_filter('wp_head', 'bones_remove_wp_widget_recent_comments_style', 1);
 	// clean up comment styles in the head
-	add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
+	add_action('wp_head', 'bones_remove_recent_comments_style', 1);
 	// clean up gallery output in wp
-	add_filter( 'gallery_style', 'bones_gallery_style' );
+	add_filter('gallery_style', 'bones_gallery_style');
 
 	// enqueue base scripts and styles
-	add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
+	add_action('wp_enqueue_scripts', 'bones_scripts_and_styles', 999);
 	// ie conditional wrapper
 
 	// launching this stuff after theme setup
 	bones_theme_support();
 
 	// adding sidebars to Wordpress (these are created in functions.php)
-	add_action( 'widgets_init', 'bones_register_sidebars' );
+	add_action('widgets_init', 'bones_register_sidebars');
 	// adding the bones search form (created in functions.php)
-	add_filter( 'get_search_form', 'bones_wpsearch' );
+	add_filter('get_search_form', 'bones_wpsearch');
 
 	// cleaning up random code around images
-	add_filter( 'the_content', 'bones_filter_ptags_on_images' );
+	add_filter('the_content', 'bones_filter_ptags_on_images');
 	// cleaning up excerpt
-	add_filter( 'excerpt_more', 'bones_excerpt_more' );
+	add_filter('excerpt_more', 'bones_excerpt_more');
 
 } /* end bones ahoy */
 
@@ -61,25 +61,25 @@ need.
 
 function bones_head_cleanup() {
 	// category feeds
-	// remove_action( 'wp_head', 'feed_links_extra', 3 );
+	// remove_action('wp_head', 'feed_links_extra', 3);
 	// post and comment feeds
-	// remove_action( 'wp_head', 'feed_links', 2 );
+	// remove_action('wp_head', 'feed_links', 2);
 	// EditURI link
-	remove_action( 'wp_head', 'rsd_link' );
+	remove_action('wp_head', 'rsd_link');
 	// windows live writer
-	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action('wp_head', 'wlwmanifest_link');
 	// previous link
-	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+	remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 	// start link
-	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+	remove_action('wp_head', 'start_post_rel_link', 10, 0);
 	// links for adjacent posts
-	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 	// WP version
-	remove_action( 'wp_head', 'wp_generator' );
+	remove_action('wp_head', 'wp_generator');
 	// remove WP version from css
-	add_filter( 'style_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+	add_filter('style_loader_src', 'bones_remove_wp_ver_css_js', 9999);
 	// remove Wp version from scripts
-	add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+	add_filter('script_loader_src', 'bones_remove_wp_ver_css_js', 9999);
 
 } /* end bones head cleanup */
 
@@ -87,16 +87,16 @@ function bones_head_cleanup() {
 function bones_rss_version() { return ''; }
 
 // remove WP version from scripts
-function bones_remove_wp_ver_css_js( $src ) {
-	if ( strpos( $src, 'ver=' ) )
-		$src = remove_query_arg( 'ver', $src );
+function bones_remove_wp_ver_css_js($src) {
+	if (strpos($src, 'ver='))
+		$src = remove_query_arg('ver', $src);
 	return $src;
 }
 
 // remove injected CSS for recent comments widget
 function bones_remove_wp_widget_recent_comments_style() {
-	if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) ) {
-		remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
+	if (has_filter('wp_head', 'wp_widget_recent_comments_style')) {
+		remove_filter('wp_head', 'wp_widget_recent_comments_style');
 	}
 }
 
@@ -104,13 +104,13 @@ function bones_remove_wp_widget_recent_comments_style() {
 function bones_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
-		remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
+		remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 	}
 }
 
 // remove injected CSS from gallery
 function bones_gallery_style($css) {
-	return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
+	return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
 
@@ -124,33 +124,33 @@ function bones_scripts_and_styles() {
 	if (!is_admin()) {
 
 		// modernizr (without media query polyfill)
-		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+		wp_register_script('bones-modernizr', get_stylesheet_directory_uri() . '/js/libs/modernizr.custom.min.js', array(), '2.5.3', false);
 
 		// register main stylesheet
-		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
+		wp_register_style('bones-stylesheet', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all');
 
 		// ie-only style sheet
-		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/css/ie.css', array(), '' );
+		wp_register_style('bones-ie-only', get_stylesheet_directory_uri() . '/css/ie.css', array(), '');
 
 		// vendor libraries
-		wp_register_script( 'bones-plugins-js', get_stylesheet_directory_uri() . '/js/plugins.min.js', array(), '', true );
+		wp_register_script('bones-plugins-js', get_stylesheet_directory_uri() . '/js/plugins.min.js', array(), '', true);
 		//adding scripts file in the footer
-		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/js/scripts.js', array(), '', true );
+		wp_register_script('bones-js', get_stylesheet_directory_uri() . '/js/scripts.js', array(), '', true);
 
 		// enqueue styles and scripts
-		wp_enqueue_script( 'bones-modernizr' );
-		wp_enqueue_style( 'bones-stylesheet' );
-		wp_enqueue_style( 'bones-ie-only' );
+		wp_enqueue_script('bones-modernizr');
+		wp_enqueue_style('bones-stylesheet');
+		wp_enqueue_style('bones-ie-only');
 
-		$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
+		$wp_styles->add_data('bones-ie-only', 'conditional', 'lt IE 9'); // add conditional wrapper around ie stylesheet
 
 		/*
 		I recommend using a plugin to call jQuery
 		using the google cdn. That way it stays cached
 		and your site will load faster.
 		*/
-		wp_enqueue_script( 'bones-plugins-js' );
-		wp_enqueue_script( 'bones-js' );
+		wp_enqueue_script('bones-plugins-js');
+		wp_enqueue_script('bones-js');
 
 	}
 }
@@ -163,13 +163,13 @@ THEME SUPPORT
 function bones_theme_support() {
 
 	// wp thumbnails (sizes handled in functions.php)
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support('post-thumbnails');
 
 	// default thumb size
 	set_post_thumbnail_size(125, 125, true);
 
 	// wp custom background (thx to @bransonwerner for update)
-	add_theme_support( 'custom-background',
+	add_theme_support('custom-background',
 		array(
 		'default-image' => '',  // background image default
 		'default-color' => '', // background color default (dont add the #)
@@ -185,7 +185,7 @@ function bones_theme_support() {
 	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
 
 	// adding post format support
-	// add_theme_support( 'post-formats',
+	// add_theme_support('post-formats',
 	// 	array(
 	// 		'aside',             // title less blurb
 	// 		'gallery',           // gallery of images
@@ -197,16 +197,16 @@ function bones_theme_support() {
 	// 		'audio',             // audio
 	// 		'chat'               // chat transcript
 	// 	)
-	// );
+	//);
 
 	// wp menus
-	add_theme_support( 'menus' );
+	add_theme_support('menus');
 
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'bonestheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'bonestheme' ) // secondary nav in footer
+			'main-nav' => __('The Main Menu', 'bonestheme'),   // main nav in header
+			'footer-links' => __('Footer Links', 'bonestheme') // secondary nav in footer
 		)
 	);
 } /* end bones theme support */
@@ -222,7 +222,7 @@ function bones_main_nav() {
 	wp_nav_menu(array(
 		'container' => false,                           // remove nav container
 		'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-		'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
+		'menu' => __('The Main Menu', 'bonestheme'),  // nav name
 		'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
 		'theme_location' => 'main-nav',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
@@ -240,7 +240,7 @@ function bones_footer_links() {
 	wp_nav_menu(array(
 		'container' => '',                              // remove nav container
 		'container_class' => 'footer-links clearfix',   // class of container (should you choose to use it)
-		'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
+		'menu' => __('Footer Links', 'bonestheme'),   // nav name
 		'menu_class' => 'nav footer-nav clearfix',      // adding custom nav class
 		'theme_location' => 'footer-links',             // where it's located in the theme
 		'before' => '',                                 // before the menu
@@ -254,7 +254,7 @@ function bones_footer_links() {
 
 // this is the fallback for header menu
 function bones_main_nav_fallback() {
-	wp_page_menu( array(
+	wp_page_menu(array(
 		'show_home' => true,
 		'menu_class' => 'nav top-nav clearfix',      // adding custom nav class
 		'include'     => '',
@@ -262,7 +262,7 @@ function bones_main_nav_fallback() {
 		'echo'        => true,
 		'link_before' => '',                            // before each link
 		'link_after' => ''                             // after each link
-	) );
+	));
 }
 
 // this is the fallback for footer menu
@@ -274,13 +274,13 @@ function bones_footer_links_fallback() {
 RELATED POSTS FUNCTION
 *********************/
 
-// Related Posts Function (call using bones_related_posts(); )
+// Related Posts Function (call using bones_related_posts();)
 function bones_related_posts() {
 	echo '<ul id="bones-related-posts">';
 	global $post;
-	$tags = wp_get_post_tags( $post->ID );
+	$tags = wp_get_post_tags($post->ID);
 	if($tags) {
-		foreach( $tags as $tag ) { 
+		foreach($tags as $tag) { 
 			$tag_arr .= $tag->slug . ',';
 		}
 		$args = array(
@@ -288,13 +288,13 @@ function bones_related_posts() {
 			'numberposts' => 5, /* you can change this to show more */
 			'post__not_in' => array($post->ID)
 		);
-		$related_posts = get_posts( $args );
+		$related_posts = get_posts($args);
 		if($related_posts) {
-			foreach ( $related_posts as $post ) : setup_postdata( $post ); ?>
+			foreach ($related_posts as $post) : setup_postdata($post); ?>
 				<li class="related_post"><a class="entry-unrelated" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
 			<?php endforeach; }
 		else { ?>
-			<?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'bonestheme' ) . '</li>'; ?>
+			<?php echo '<li class="no_related_post">' . __('No Related Posts Yet!', 'bonestheme') . '</li>'; ?>
 		<?php }
 	}
 	wp_reset_query();
@@ -309,22 +309,22 @@ PAGE NAVI
 function bones_page_navi() {
 	global $wp_query;
 	$bignum = 999999999;
-	if ( $wp_query->max_num_pages <= 1 )
+	if ($wp_query->max_num_pages <= 1)
 		return;
 	
 	echo '<nav class="pagination">';
 	
-		echo paginate_links( array(
-			'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
+		echo paginate_links(array(
+			'base' 			=> str_replace($bignum, '%#%', esc_url(get_pagenum_link($bignum))),
 			'format' 		=> '',
-			'current' 		=> max( 1, get_query_var('paged') ),
+			'current' 		=> max(1, get_query_var('paged')),
 			'total' 		=> $wp_query->max_num_pages,
 			'prev_text' 	=> '&larr;',
 			'next_text' 	=> '&rarr;',
 			'type'			=> 'list',
 			'end_size'		=> 3,
 			'mid_size'		=> 3
-		) );
+		));
 	
 	echo '</nav>';
 } /* end page navi */
@@ -342,7 +342,7 @@ function bones_filter_ptags_on_images($content){
 function bones_excerpt_more($more) {
 	global $post;
 	// edit here if you like
-	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'bonestheme' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'bonestheme' ) .'</a>';
+	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __('Read', 'bonestheme') . get_the_title($post->ID).'">'. __('Read more &raquo;', 'bonestheme') .'</a>';
 }
 
 /*
@@ -352,22 +352,20 @@ function bones_excerpt_more($more) {
  */
 function bones_get_the_author_posts_link() {
 	global $authordata;
-	if ( !is_object( $authordata ) )
+	if (!is_object($authordata))
 		return false;
 	$link = sprintf(
 		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
-		get_author_posts_url( $authordata->ID, $authordata->user_nicename ),
-		esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ), // No further l10n needed, core will take care of this one
+		get_author_posts_url($authordata->ID, $authordata->user_nicename),
+		esc_attr(sprintf(__('Posts by %s'), get_the_author())), // No further l10n needed, core will take care of this one
 		get_the_author()
 	);
 	return $link;
 }
 
-function my_format_TinyMCE( $in ) {
+function my_format_TinyMCE($in) {
 	$in['remove_linebreaks'] = false;
 	$in['wpautop'] = false;
 	return $in;
 }
-add_filter( 'tiny_mce_before_init', 'my_format_TinyMCE' );
-
-?>
+add_filter('tiny_mce_before_init', 'my_format_TinyMCE');

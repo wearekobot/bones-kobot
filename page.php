@@ -7,8 +7,8 @@
 				</section>
 				<?php endwhile; else : ?>
 				<section id="post-not-found" class="hentry">
-					<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+					<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
+					<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
 				</section>
 				<?php endif; ?>
 				<?php // get_sidebar(); ?>

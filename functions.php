@@ -23,7 +23,7 @@ sidebars, comments, ect.
 	- custom google+ integration
 	- adding custom fields to user profiles
 */
-require_once( 'library/bones.php' ); // if you remove this, bones will break
+require_once('library/bones.php'); // if you remove this, bones will break
 
 /*
 2. library/admin.php
@@ -32,13 +32,13 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 	- adding custom login css
 	- changing text in footer of admin
 */
-require_once( 'library/admin.php' ); // this comes turned off by default
+require_once('library/admin.php'); // this comes turned off by default
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size('bones-thumb-600', 600, 150, true);
+add_image_size('bones-thumb-300', 300, 100, true);
 
 /*
 to add more sizes, simply copy a line from above
@@ -52,17 +52,17 @@ inside the thumbnail function.
 
 For example, to call the 300 x 300 sized image,
 we would use the function:
-<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
+<?php the_post_thumbnail('bones-thumb-300'); ?>
 for the 600 x 100 image:
-<?php the_post_thumbnail( 'bones-thumb-600' ); ?>
+<?php the_post_thumbnail('bones-thumb-600'); ?>
 
 You can change the names and dimensions to whatever
 you like. Enjoy!
 */
 
-add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
+add_filter('image_size_names_choose', 'bones_custom_image_sizes');
 
-function bones_custom_image_sizes( $sizes ) {
+function bones_custom_image_sizes($sizes) {
 	return array_merge($sizes, array(
 		'bones-thumb-600' => '600px by 150px',
 		'bones-thumb-300' => '300px by 100px',
@@ -83,8 +83,8 @@ new image size.
 function bones_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'bonestheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
+		'name' => __('Sidebar 1', 'bonestheme'),
+		'description' => __('The first (primary) sidebar.', 'bonestheme'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -95,7 +95,7 @@ function bones_register_sidebars() {
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function bones_comments( $comment, $args, $depth ) {
+function bones_comments($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;
 	
 	$commentHtml = '';
@@ -104,7 +104,7 @@ function bones_comments( $comment, $args, $depth ) {
 	$commentHtml .= '<header class="comment-author vcard">';
 	/*
 		this is the new responsive optimized comment image. It used the new HTML5 data-attribute to display comment gravatars on larger screens only. What this means is that on larger posts, mobile sites don't have a ton of requests for comment images. This makes load time incredibly fast! If you'd like to change it back, just replace it with the regular wordpress gravatar call:
-		echo get_avatar($comment,$size='32',$default='<path_to_url>' );
+		echo get_avatar($comment,$size='32',$default='<path_to_url>');
 	*/
 	$bgauthemail = get_comment_author_email();
 	$commentHtml .= '<img data-gravatar="http://www.gravatar.com/avatar/' . md5($bgauthemail) . '?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="'. get_template_directory_uri() .'/images/nothing.gif" />';
@@ -127,10 +127,10 @@ function bones_comments( $comment, $args, $depth ) {
 
 // Search Form
 function bones_wpsearch($form) {
-	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'bonestheme' ) . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'bonestheme' ) . '" />
-	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
+	$form = '<form role="search" method="get" id="searchform" action="' . home_url('/') . '" >
+	<label class="screen-reader-text" for="s">' . __('Search for:', 'bonestheme') . '</label>
+	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__('Search the Site...', 'bonestheme') . '" />
+	<input type="submit" id="searchsubmit" value="' . esc_attr__('Search') .'" />
 	</form>';
 	return $form;
 }
@@ -145,7 +145,7 @@ function is_blog() {
 	return (($posttype == 'post') && (is_home() || is_single() || is_archive() || is_category() || is_tag() || is_author())) ? true : false;
 }
 
-function fix_blog_link_on_cpt( $classes, $item, $args ) {
+function fix_blog_link_on_cpt($classes, $item, $args) {
 	if (!is_blog()) {
 		$blog_page_id = intval(get_option('page_for_posts'));
 		if ($blog_page_id != 0 && $item->object_id == $blog_page_id)
@@ -183,10 +183,10 @@ function remove_admin_bar_links() {
 	$wp_admin_bar->remove_menu('w3tc');             // If you use w3 total cache remove the performance link
 	// $wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
 }
-add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
+add_action('wp_before_admin_bar_render', 'remove_admin_bar_links');
 
 //remove comments from admin menu
-add_action( 'admin_menu', 'my_remove_menu_pages' );
+add_action('admin_menu', 'my_remove_menu_pages');
 
 function my_remove_menu_pages() {
 	remove_menu_page('edit-comments.php');  
