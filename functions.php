@@ -191,3 +191,35 @@ add_action('admin_menu', 'my_remove_menu_pages');
 function my_remove_menu_pages() {
 	remove_menu_page('edit-comments.php');  
 }
+
+function div_maker($atts, $content = '&nbsp;') {
+	extract(
+		shortcode_atts(
+			array(
+				'class' => '', 
+				'id' => '', 
+			), 
+			$atts
+		)
+	);
+	$classHtml = (!empty($class)) ? ' class="' . $class .'" ': '';
+	$idHtml = (!empty($id)) ? ' id="' . $id .'"': '';
+	return '<div' . $classHtml . $idHtml . '>' . do_shortcode($content) . '</div>';
+}
+add_shortcode('div', 'div_maker');
+
+function section_maker($atts, $content = '&nbsp;') {
+	extract(
+		shortcode_atts(
+			array(
+				'class' => '', 
+				'id' => '', 
+			), 
+			$atts
+		)
+	);
+	$classHtml = (!empty($class)) ? ' class="' . $class .'" ': '';
+	$idHtml = (!empty($id)) ? ' id="' . $id .'"': '';
+	return '<section' . $classHtml . $idHtml . '>' . do_shortcode($content) . '</section>';
+}
+add_shortcode('section', 'section_maker');
