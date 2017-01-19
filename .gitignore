@@ -54,7 +54,7 @@ temp/
 
 .svn
 
-js/vendor
+_bower_components
 js/*.js
 css/*.css
 Gemfile.lock
