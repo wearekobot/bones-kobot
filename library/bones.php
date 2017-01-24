@@ -362,10 +362,3 @@ function bones_get_the_author_posts_link() {
 	);
 	return $link;
 }
-
-function my_format_TinyMCE($in) {
-	$in['remove_linebreaks'] = false;
-	$in['wpautop'] = false;
-	return $in;
-}
-add_filter('tiny_mce_before_init', 'my_format_TinyMCE');
