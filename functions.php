@@ -145,7 +145,7 @@ function is_blog() {
 	return (($posttype == 'post') && (is_home() || is_single() || is_archive() || is_category() || is_tag() || is_author())) ? true : false;
 }
 
-function fix_blog_link_on_cpt($classes, $item, $args) {
+function bones_fix_blog_link_on_cpt($classes, $item, $args) {
 	if (!is_blog()) {
 		$blog_page_id = intval(get_option('page_for_posts'));
 		if ($blog_page_id != 0 && $item->object_id == $blog_page_id)
@@ -153,21 +153,21 @@ function fix_blog_link_on_cpt($classes, $item, $args) {
 	}
 	return $classes;
 }
-add_filter('nav_menu_css_class', 'fix_blog_link_on_cpt', 10, 3);
+add_filter('nav_menu_css_class', 'bones_fix_blog_link_on_cpt', 10, 3);
 
 
 // Add Page Slug Body Class
-function add_slug_body_class($classes) {
+function bones_add_slug_body_class($classes) {
 	global $post;
 	if (isset($post)) {
 		$classes[] = $post->post_type . '-' . $post->post_name;
 	}
 	return $classes;
 }
-add_filter('body_class', 'add_slug_body_class');
+add_filter('body_class', 'bones_add_slug_body_class');
 
 //remove stuff from admin bar
-function remove_admin_bar_links() {
+function bones_remove_admin_bar_links() {
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('wp-logo');          // Remove the WordPress logo
 	$wp_admin_bar->remove_menu('about');            // Remove the about WordPress link
@@ -183,16 +183,16 @@ function remove_admin_bar_links() {
 	$wp_admin_bar->remove_menu('w3tc');             // If you use w3 total cache remove the performance link
 	// $wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
 }
-add_action('wp_before_admin_bar_render', 'remove_admin_bar_links');
+add_action('wp_before_admin_bar_render', 'bones_remove_admin_bar_links');
 
 //remove comments from admin menu
-add_action('admin_menu', 'my_remove_menu_pages');
+add_action('admin_menu', 'bones_remove_menu_pages');
 
-function my_remove_menu_pages() {
+function bones_remove_menu_pages() {
 	remove_menu_page('edit-comments.php');  
 }
 
-function div_maker($atts, $content = '&nbsp;') {
+function bones_div_maker($atts, $content = '&nbsp;') {
 	extract(
 		shortcode_atts(
 			array(
@@ -206,9 +206,9 @@ function div_maker($atts, $content = '&nbsp;') {
 	$idHtml = (!empty($id)) ? ' id="' . $id .'"': '';
 	return '<div' . $classHtml . $idHtml . '>' . do_shortcode($content) . '</div>';
 }
-add_shortcode('div', 'div_maker');
+add_shortcode('div', 'bones_div_maker');
 
-function section_maker($atts, $content = '&nbsp;') {
+function bones_section_maker($atts, $content = '&nbsp;') {
 	extract(
 		shortcode_atts(
 			array(
@@ -222,4 +222,4 @@ function section_maker($atts, $content = '&nbsp;') {
 	$idHtml = (!empty($id)) ? ' id="' . $id .'"': '';
 	return '<section' . $classHtml . $idHtml . '>' . do_shortcode($content) . '</section>';
 }
-add_shortcode('section', 'section_maker');
+add_shortcode('section', 'bones_section_maker');
