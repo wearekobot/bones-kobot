@@ -30,7 +30,7 @@
 						</nav>
 					<?php endif; ?>
 				<?php else : ?>
-				<article id="post-not-found" class="hentry">
+				<article id="post-not-found">
 					<header class="article-header">
 						<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
 					</header>

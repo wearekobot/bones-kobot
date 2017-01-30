@@ -6,7 +6,7 @@
 					<?php the_content(); ?>
 				</section>
 				<?php endwhile; else : ?>
-				<section id="post-not-found" class="hentry">
+				<section id="post-not-found">
 					<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
 					<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
 				</section>

@@ -2,7 +2,7 @@
 			<div id="content">
 				<div id="inner-content" class="wrap">
 					<div id="main" class="eightcol first" role="main">
-						<article id="post-not-found" class="hentry">
+						<article id="post-not-found">
 							<header class="article-header">
 								<h1><?php _e('Epic 404 - Article Not Found', 'bonestheme'); ?></h1>
 							</header>
