@@ -58,5 +58,6 @@ _bower_components
 js/*.js
 css/*.css
 Gemfile.lock
+yarn.lock
 .sass-cache
 node_modules
