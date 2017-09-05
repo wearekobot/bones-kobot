@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       },
       js : {
         files : ['js/**/*.js'],
-        tasks : ['jshint'],
+        tasks : [],
         options : {
           livereload : true
         }
@@ -149,8 +149,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['watch']);
 
   // Build task
-  grunt.registerTask('build', [
-    'jshint', 
+  grunt.registerTask('build', [ 
     'compass', 
     'coffee', 
     'autoprefixer',
