@@ -40,6 +40,12 @@ require_once('library/admin.php'); // this comes turned off by default
 add_image_size('bones-thumb-600', 600, 150, true);
 add_image_size('bones-thumb-300', 300, 100, true);
 
+add_image_size('hero-mobile', 600, 600, true);
+add_image_size('hero-ipad', 1000, 325, true);
+add_image_size('hero-desktop-small', 1500, 1125, true);
+add_image_size('hero-desktop', 2000, 1500, true);
+add_image_size('hero-desktop-large', 3000, 2250, true);
+
 /*
 to add more sizes, simply copy a line from above
 and change the dimensions & name. As long as you
@@ -133,6 +139,29 @@ function bones_wpsearch($form) {
 	<input type="submit" id="searchsubmit" value="' . esc_attr__('Search') .'" />
 	</form>';
 	return $form;
+}
+
+// search the blog
+
+// Search Form
+function bones_blogsearch($form) {
+	$form = '<form role="search" method="get" id="searchform" action="' . home_url('/') . '" >
+	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__('Search the Blog', 'bonestheme') . '" />
+	<input type="submit" id="searchsubmit" value="' . esc_attr__('Search') .'" />
+	</form>';
+	return $form;
+}
+
+
+// limiting search
+
+function searchfilter($query) {
+ 
+    if ($query->is_search && !is_admin() ) {
+        $query->set('post_type',array('post'));
+    }
+ 
+return $query;
 }
 
 

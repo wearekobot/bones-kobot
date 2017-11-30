@@ -1,22 +1,37 @@
 <?php get_header(); ?>
-			<div id="content">
-				<h1 class="archive-title"><span><?php _e('Search Results for:', 'bonestheme'); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
+			<section id="intro-block" class="">
+				<div class="wrap">
+					<div class="block-text">
+						<h1 class="archive-title"><span><?php _e('Search Results for:', 'bonestheme'); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
+					</div>
+				</div>
+			</section>
+			<div id="content" class="wrap">	
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class(''); ?> role="article">
-						<header class="article-header">
-							<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-							<p class="byline vcard"><?php
-								printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link(), get_the_category_list(', '));
-							?></p>
-						</header>
-						
-						<section class="entry-content">
-								<?php the_excerpt('<span class="read-more">' . __('Read more &raquo;', 'bonestheme') . '</span>'); ?>
-						</section>
-						
-						<footer class="article-footer">
-						</footer>
-						
+					<article id="post-<?php the_ID(); ?>" <?php post_class('grid'); ?> role="article">
+						<div class="block-image four">
+							<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail('blog-thumb'); ?>
+								<?php else: ?>
+									<img src="<?php echo get_template_directory_uri(); ?>/images/placeholder.jpg" alt="">
+								<?php endif; ?>
+								
+							</a>
+						</div>
+						<div class="block-content eight last">
+							<header class="article-header">
+								<p class="post-category"><?php
+									printf(__('%1$s.', 'bonestheme'), get_the_category_list(', '));
+								?></p>
+								<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+							</header>
+							
+							<section class="entry-content">
+								<?php the_excerpt(); ?>
+								<p><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">Read More</a></p>
+							</section>
+						</div>
 					</article>
 				<?php endwhile; ?>
 					<?php if (function_exists('bones_page_navi')) : ?>
@@ -38,10 +53,10 @@
 							<section class="entry-content">
 								<p><?php _e('Try your search again.', 'bonestheme'); ?></p>
 							</section>
-							
-							<footer class="article-footer">
-								<p><?php _e('This is the error message in the search.php template.', 'bonestheme'); ?></p>
-							</footer>
+							<div class="searchbox">
+								<?php echo bones_blogsearch('search'); ?>
+							</div>
+
 							
 						</article>
 				<?php endif; ?>
