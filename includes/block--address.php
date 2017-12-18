@@ -18,6 +18,6 @@
 			<h2>Contact</h2>
 			<ul>
 				<li><strong>Phone:</strong> <a href="tel:<?php echo $phone_number; ?>"><?php echo $phone_number; ?></a></li>
-				<li><strong>Fax:</strong> <a href="tel:<?php echo $fax_number; ?>"><?php echo $fax_number; ?></a></li>
+				<li><strong>Fax:</strong> <?php echo $fax_number; ?></li>
 				<li><strong>Email:</strong> <a href="mailto:<?php echo $email_address; ?>"><?php echo $email_address; ?></a></li>
 			</ul>

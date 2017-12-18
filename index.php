@@ -1,5 +1,11 @@
 <?php get_header(); ?>
-			
+			<?php 
+				$page_for_posts_id =  get_option('page_for_posts');
+				$post = get_post($page_for_posts_id);
+				if (isset($post) && !empty($post)) {
+					include('includes/block--background.php');
+				}
+			?>
 			<section id="intro-block" class="leader-blog">
 				<div class="wrap">
 					<div class="block-text">
@@ -18,16 +24,14 @@
 									<?php if ( has_post_thumbnail() ) : ?>
 										<?php the_post_thumbnail('blog-thumb'); ?>
 									<?php else: ?>
-										<img src="<?php echo get_template_directory_uri(); ?>/images/placeholder.jpg" alt="">
-									<?php endif; ?>
-									
+										<img src="<?php echo get_template_directory_uri(); ?>/images/blog-placeholder.jpg" alt="">
+									<?php endif; ?>			
 								</a>
 							</div>
 							<div class="block-content eight last">
 								<header class="article-header">
 									<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 								</header>
-								
 								<section class="entry-content">
 									<?php the_excerpt(); ?>
 									<p><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>" class="btn">Read More</a></p>

@@ -10,6 +10,8 @@ sidebars, comments, ect.
 
 /************* INCLUDE NEEDED FILES ***************/
 
+require_once('library/bones-options.php');
+
 /*
 1. library/bones.php
 	- head cleanup (remove rsd, uri links, junk css, ect)
