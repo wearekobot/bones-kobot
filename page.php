@@ -1,16 +1,28 @@
 <?php get_header(); ?>
-			<div id="content">
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-				<section id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<h1 class="page-title"><?php the_title(); ?></h1>
-					<?php the_content(); ?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<?php include('includes/block--background.php'); ?>
+				<section id="intro-block">
+					<div class="wrap">
+						<h1><?php the_title(); ?></h1>
+					</div>
 				</section>
-				<?php endwhile; else : ?>
+				<div id="content">
+					<section id="page-<?php the_ID(); ?>" <?php post_class('wrap'); ?>>
+						<?php the_content(); ?>
+					</section>
+				</div>
+			<?php endwhile; else : ?>
+				<section id="intro-block">
+					<div class="wrap">
+						<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
+					</div>
+				</section>
+				<div id="content">
+					<sectionclass="wrap">
+						<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
+					</section>
+				</div>
 				<section id="post-not-found">
-					<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
-					<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
 				</section>
-				<?php endif; ?>
-				<?php // get_sidebar(); ?>
-			</div>
+			<?php endif; ?>
 <?php get_footer(); ?>
