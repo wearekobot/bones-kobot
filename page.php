@@ -18,7 +18,7 @@
 					</div>
 				</section>
 				<div id="content">
-					<sectionclass="wrap">
+					<section class="wrap">
 						<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
 					</section>
 				</div>
