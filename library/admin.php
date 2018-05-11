@@ -85,7 +85,7 @@ function bones_welcomevideo_dashboard_widget() {
 // Manual Widget
 function bones_manual_dashboard_widget() {
 	echo '
-		<p>If you need any help with the site, first download and consult the <a href="#">manual</a>.</p>
+		<p>If you need any help with the site, first download and consult the manual.</p>
 		<p>Should the manual not cover the problem, <a href="mailto:info@kobot.ca">drop us an email at info@kobot.ca!</a></p>
 
 	';
@@ -94,7 +94,7 @@ function bones_manual_dashboard_widget() {
 // Kobot widget
 function bones_Kobot_dashboard_widget() {
 	echo '
-		<p>This site was lovingly built by Bryan Kulba, Stefan Duret and Bryan Birtles at Kobot Industries Ltd. in Edmonton, Alberta</p>
+	<p>This site was lovingly built by Bryan Kulba, Stefan Duret, Mariah Barnaby-Norris and Jodie McRobbie at Kobot Industries Ltd. in Edmonton, Alberta</p>
 
 	';
 }
