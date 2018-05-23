@@ -210,48 +210,48 @@ function bones_contact_information($wp_customize) {
 		)
 	);
 
-	// $wp_customize->add_setting(
-	// 	'twitter_username',
-	// 	array(
-	// 		'sanitize_callback' => 'sanitize_text_field'
-	// 	)
-	// );
-	// $wp_customize->add_control(
-	// 	'twitter_username',
-	// 	array(
-	// 		'label' => 'Twitter Username',
-	// 		'section' => 'contact_information',
-	// 		'type' => 'text'
-	// 	)
-	// );
+	$wp_customize->add_setting(
+		'twitter_username',
+		array(
+			'sanitize_callback' => 'sanitize_text_field'
+		)
+	);
+	$wp_customize->add_control(
+		'twitter_username',
+		array(
+			'label' => 'Twitter Username',
+			'section' => 'contact_information',
+			'type' => 'text'
+		)
+	);
 
-	// $wp_customize->add_setting(
-	// 	'facebook_url', array(
-	// 	'sanitize_callback' => 'esc_url_raw',
-	// ));
-	// $wp_customize->add_control(
-	// 	'facebook_url',
-	// 	array(
-	// 		'label' => 'Facebook URL',
-	// 		'section' => 'contact_information',
-	// 		'type' => 'text'
-	// 	)
-	// );
+	$wp_customize->add_setting(
+		'facebook_url', array(
+		'sanitize_callback' => 'esc_url_raw',
+	));
+	$wp_customize->add_control(
+		'facebook_url',
+		array(
+			'label' => 'Facebook URL',
+			'section' => 'contact_information',
+			'type' => 'text'
+		)
+	);
 
-	// $wp_customize->add_setting(
-	// 	'instagram_username',
-	// 	array(
-	// 		'sanitize_callback' => 'sanitize_text_field'
-	// 	)
-	// );
-	// $wp_customize->add_control(
-	// 	'instagram_username',
-	// 	array(
-	// 		'label' => 'Instagram Username',
-	// 		'section' => 'contact_information',
-	// 		'type' => 'text'
-	// 	)
-	// );
+	$wp_customize->add_setting(
+		'instagram_username',
+		array(
+			'sanitize_callback' => 'sanitize_text_field'
+		)
+	);
+	$wp_customize->add_control(
+		'instagram_username',
+		array(
+			'label' => 'Instagram Username',
+			'section' => 'contact_information',
+			'type' => 'text'
+		)
+	);
 	
 }
 add_action('customize_register', 'bones_contact_information');
