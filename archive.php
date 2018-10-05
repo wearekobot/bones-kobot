@@ -25,30 +25,8 @@
 			
 			<div id="content">
 				<section id="page-<?php the_ID(); ?>" <?php post_class('wrap grid'); ?>>
-					<div class="eight">
-						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<article id="post-<?php the_ID(); ?>" <?php post_class('block-image_color grid'); ?> role="article">
-							<div class="block-image four">
-								<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-									<?php if ( has_post_thumbnail() ) : ?>
-										<?php the_post_thumbnail('blog-thumb'); ?>
-									<?php else: ?>
-										<img src="<?php echo get_template_directory_uri(); ?>/images/placeholder.jpg" alt="">
-									<?php endif; ?>
-									
-								</a>
-							</div>
-							<div class="block-content eight last">
-								<header class="article-header">
-									<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-								</header>
-								
-								<section class="entry-content">
-									<?php the_excerpt(); ?>
-									<p><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>" class="btn">Read More</a></p>
-								</section>
-							</div>
-						</article>				
+					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+						<?php include('includes/block--article.php'); ?>		
 					<?php endwhile; ?>
 						
 						<?php if (function_exists('bones_page_navi')) : ?>
@@ -75,38 +53,6 @@
 							</div>
 						</article>
 					<?php endif; ?>
-					</div>
-				
-					<div class="last four">
-						<div class="sidebar blog-sidebar">
-							<?php echo bones_blogsearch('search'); ?>
-						</div>
-					
-						<div class="sidebar blog-sidebar">
-							<h2>Categories</h2>
-							<form id="category-select" class="category-select" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-								<?php
-								$args = array(
-									'show_option_none' => __( 'Select category' ),
-									'show_count'       => 1,
-									'orderby'          => 'name',
-									'echo'             => 0,
-								);
-								?>
-							
-								<?php $select  = wp_dropdown_categories( $args ); ?>
-								<?php $replace = "<select$1 onchange='return this.form.submit()'>"; ?>
-								<?php $select  = preg_replace( '#<select([^>]*)>#', $replace, $select ); ?>
-							
-								<?php echo $select; ?>
-							
-								<noscript>
-									<input type="submit" value="View" />
-								</noscript>
-							
-							</form>
-						</div>
-					</div>
 				</section>
 			</div>
 <?php get_footer(); ?>
