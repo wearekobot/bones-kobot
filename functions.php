@@ -42,10 +42,10 @@ require_once('library/admin.php'); // this comes turned off by default
 add_image_size('bones-thumb-600', 600, 150, true);
 add_image_size('bones-thumb-300', 300, 100, true);
 
-add_image_size('hero-mobile', 600, 600, true);
-add_image_size('hero-ipad', 1000, 325, true);
-add_image_size('hero-desktop-small', 1500, 1125, true);
-add_image_size('hero-desktop', 2000, 1500, true);
+add_image_size('hero-mobile', 600, 360, true);
+add_image_size('hero-ipad', 1000, 650, true);
+add_image_size('hero-desktop-small', 1500, 900, true);
+add_image_size('hero-desktop', 2000, 1300, true);
 add_image_size('hero-desktop-large', 3000, 2250, true);
 
 /*

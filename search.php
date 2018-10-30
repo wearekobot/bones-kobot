@@ -8,31 +8,7 @@
 			</section>
 			<div id="content" class="wrap">	
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class('grid'); ?> role="article">
-						<div class="block-image four">
-							<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-								<?php if ( has_post_thumbnail() ) : ?>
-									<?php the_post_thumbnail('blog-thumb'); ?>
-								<?php else: ?>
-									<img src="<?php echo get_template_directory_uri(); ?>/images/placeholder.jpg" alt="">
-								<?php endif; ?>
-								
-							</a>
-						</div>
-						<div class="block-content eight last">
-							<header class="article-header">
-								<p class="post-category"><?php
-									printf(__('%1$s.', 'bonestheme'), get_the_category_list(', '));
-								?></p>
-								<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-							</header>
-							
-							<section class="entry-content">
-								<?php the_excerpt(); ?>
-								<p><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">Read More</a></p>
-							</section>
-						</div>
-					</article>
+					<?php include('includes/block--article.php'); ?>
 				<?php endwhile; ?>
 					<?php if (function_exists('bones_page_navi')) : ?>
 						<?php bones_page_navi(); ?>

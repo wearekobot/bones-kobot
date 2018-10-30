@@ -39,16 +39,11 @@
 	<body <?php body_class(); ?>>
 		<div id="container">
 			<header id="header">
-				<div class="wrap">
-					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+				<div class="wrap header-top grid">
 					<p class="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-					<?php // if you'd like to use the site description you can un-comment it below ?>
-					<?php // bloginfo('description'); ?>
-					<nav role="navigation">
-						<div class="nav-wrap wrap">
-							<?php bones_main_nav(); ?>						
-						</div>
-						<div class="navHamburger">menu</div>
+					<nav class="header--navigation">
+						<?php bones_main_nav(); ?>
+						<div class="navHamburger">&equiv;</div>
 					</nav>
 				</div>
 			</header>
