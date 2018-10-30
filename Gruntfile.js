@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     watch : {
       compass: {
         files: ['scss/**/*.{scss,sass}'],
-        tasks: ['compass', 'autoprefixer']
+        tasks: ['compass', 'postcss']
       },
       coffee: {
         files: ['coffee/**/*.coffee'],
@@ -71,17 +71,17 @@ module.exports = function(grunt) {
       }
     },
     
-    autoprefixer: {
+    postcss: {
       options: {
-        browsers: ['last 2 versions']
+        map: false, // inline sourcemaps
+        
+        processors: [
+          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+          require('cssnano')() // minify the result
+        ]
       },
       dist: {
-        files: [{
-          expand: true,
-          cwd: 'css',
-          src: '**/*.css',
-          dest: 'css'
-        }]
+        src: 'css/*.css'
       }
     },
     
@@ -152,7 +152,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [ 
     'compass', 
     'coffee', 
-    'autoprefixer',
+    'postcss',
     'imagemin:production', 
     'svgmin:production', 
     'uglify'
