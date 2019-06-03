@@ -66,7 +66,7 @@ module.exports = function(grunt) {
           // httpImagesPath: '<%= bones.theme %>/images',
           // httpGeneratedImagesPath: '<%= bones.theme %>/images/generated',
           outputStyle: 'expanded',
-          raw: 'extensions_dir = "_bower_components"\n'
+          raw: 'extensions_dir = "node_modules"\n'
         }
       }
     },
@@ -97,13 +97,6 @@ module.exports = function(grunt) {
       }
     },
     
-    // Bower task sets up require config
-    bower : {
-      all : {
-        rjsConfig : 'js/global.js'
-      }
-    },
-
     uglify: {
       options: {
         // banner: '/*! <%= pkg.name %> lib - v<%= pkg.version %> -' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
@@ -160,22 +153,7 @@ module.exports = function(grunt) {
 
   // Template Setup Task
   grunt.registerTask('setup', [
-    'compass', 
-    'bower-install'
+    'compass'
   ]);
-
-  // Run bower install
-  grunt.registerTask('bower-install', function() {
-    var done = this.async();
-    var bower = require('bower').commands;
-    bower.install().on('end', function(data) {
-      done();
-    }).on('data', function(data) {
-      console.log(data);
-    }).on('error', function(err) {
-      console.error(err);
-      done();
-    });
-  });
 
 };
