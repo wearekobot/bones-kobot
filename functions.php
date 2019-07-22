@@ -255,6 +255,18 @@ function bones_section_maker($atts, $content = '&nbsp;') {
 }
 add_shortcode('section', 'bones_section_maker');
 
+
+// Register a social Block
+add_action('acf/init', function () {
+	acf_register_block(array(
+		'name'        => 'social-block',
+		'title'       => __('Social Icons'),
+		'mode' => 'preview', 
+		'description'   => __('Get Social!'),
+		'render_template' => 'includes/block--social.php'
+	));
+});
+
 /**
  * Get an attachment ID given a URL.
  * 

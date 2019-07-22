@@ -252,6 +252,30 @@ function bones_contact_information($wp_customize) {
 			'type' => 'text'
 		)
 	);
+		$wp_customize->add_setting(
+		'youtube_url', array(
+		'sanitize_callback' => 'esc_url_raw',
+	));
+	$wp_customize->add_control(
+		'youtube_url',
+		array(
+			'label' => 'Youtube URL',
+			'section' => 'contact_information',
+			'type' => 'text'
+		)
+	);
+	$wp_customize->add_setting(
+		'linkedin_url', array(
+		'sanitize_callback' => 'esc_url_raw',
+	));
+	$wp_customize->add_control(
+		'linkedin_url',
+		array(
+			'label' => 'LinkedIn URL',
+			'section' => 'contact_information',
+			'type' => 'text'
+		)
+	);
 	
 }
 add_action('customize_register', 'bones_contact_information');
