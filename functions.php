@@ -311,3 +311,5 @@ function bones_get_attachment_id($url) {
 	}
 	return $attachment_id;
 }
+// gutenberg wide images
+add_theme_support( 'align-wide' );
