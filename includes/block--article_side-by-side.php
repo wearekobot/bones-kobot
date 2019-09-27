@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class("card card_blog card_image");?> role="article">
+<article id="post-<?php the_ID(); ?>" <?php post_class("card card_blog side-by-side card_image");?> role="article">
 	<div class="block--image">
 		<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
 			<?php if ( has_post_thumbnail() ) : ?>
