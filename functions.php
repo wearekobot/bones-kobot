@@ -12,6 +12,9 @@ sidebars, comments, ect.
 
 require_once('library/bones-options.php');
 
+// Registers ACF blocks
+require_once('library/bones-blocks.php');
+
 /*
 1. library/bones.php
 	- head cleanup (remove rsd, uri links, junk css, ect)
