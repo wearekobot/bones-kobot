@@ -6,23 +6,12 @@
 						<h1><?php the_title(); ?></h1>
 					</div>
 				</section>
-				<div id="content">
-					<section id="page-<?php the_ID(); ?>" <?php post_class('wrap'); ?>>
+				<section id="content">
+					<div id="page-<?php the_ID(); ?>" <?php post_class('wrap'); ?>>
 						<?php the_content(); ?>
-					</section>
-				</div>
-			<?php endwhile; else : ?>
-				<section id="intro-block">
-					<div class="wrap">
-						<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
 					</div>
 				</section>
-				<div id="content">
-					<section class="wrap">
-						<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
-					</section>
-				</div>
-				<section id="post-not-found">
-				</section>
+			<?php endwhile; else : ?>
+				<?php include('includes/block--not_found.php'); ?>	
 			<?php endif; ?>
 <?php get_footer(); ?>

@@ -6,18 +6,16 @@
 					include('includes/block--background.php');
 				}
 			?>
+			<?php if (have_posts()) : ?>
 			<section id="intro-block" class="">
 				<div class="wrap">
-					<div class="block-text">
-						<h1 class="page-title">Blog</h1>
-					</div>
+					<h1>Blog</h1>
 				</div>
 			</section>
 			
-			<div id="content">
-				<section id="page-<?php the_ID(); ?>" <?php post_class('wrap'); ?>>
-					<div class="">
-						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<section id="content">
+				<div id="page-<?php the_ID(); ?>" <?php post_class('wrap'); ?>>
+						<?php while (have_posts()) : the_post(); ?>
 							<?php include('includes/block--article.php'); ?>
 						<?php endwhile; ?>
 							<?php if (function_exists('bones_page_navi')) : ?>
@@ -30,20 +28,9 @@
 									</ul>
 								</nav>
 							<?php endif; ?>
-						<?php else : ?>
-						<article id="post-not-found">
-							<header class="article-header">
-								<h1><?php _e('Oops, Post Not Found!', 'bonestheme'); ?></h1>
-							</header>
-							<section class="entry-content">
-								<p><?php _e('Uh Oh. Something is missing. Try double checking things.', 'bonestheme'); ?></p>
-							</section>
-							<footer class="article-footer">
-								<p><?php _e('This is the error message in the index.php template.', 'bonestheme'); ?></p>
-							</footer>
-						</article>
-						<?php endif; ?>
-					</div>
-				</section>
-			</div>
+				</div>
+			</section>
+			<?php else : ?>
+				<?php include('includes/block--not_found.php'); ?>	
+			<?php endif; ?>
 <?php get_footer(); ?>
