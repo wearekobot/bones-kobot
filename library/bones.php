@@ -316,7 +316,7 @@ function bones_page_navi() {
 	if ($wp_query->max_num_pages <= 1)
 		return;
 	
-	echo '<nav class="pagination">';
+	echo '<nav class="pagination twelve">';
 	
 		echo paginate_links(array(
 			'base' 			=> str_replace($bignum, '%#%', esc_url(get_pagenum_link($bignum))),
