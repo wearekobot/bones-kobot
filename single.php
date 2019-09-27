@@ -45,14 +45,7 @@
 			
 			<?php endwhile; ?>
 			<?php else : ?>
-				<section id="intro-block" class="leader-blog">
-					<div class="wrap">
-						<h2>Blog</h2>
-					</div>
-				</section>
-				<section id="content">
 					<?php include('includes/block--not_found.php'); ?>	
-				</section>
 			<?php endif; ?>
 
 <?php get_footer(); ?>
