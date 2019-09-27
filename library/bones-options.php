@@ -210,6 +210,15 @@ function bones_contact_information($wp_customize) {
 		)
 	);
 
+	$wp_customize->add_section(
+		'social_media',
+		array(
+			'title' => 'Social Media',
+			'description' => __('Place your Social Media accounts here! Leave any accounts you don\'t have empty.'),
+			'priority' => 5
+		)
+	);
+	
 	$wp_customize->add_setting(
 		'twitter_username',
 		array(
@@ -220,7 +229,7 @@ function bones_contact_information($wp_customize) {
 		'twitter_username',
 		array(
 			'label' => 'Twitter Username',
-			'section' => 'contact_information',
+			'section' => 'social_media',
 			'type' => 'text'
 		)
 	);
@@ -233,7 +242,7 @@ function bones_contact_information($wp_customize) {
 		'facebook_url',
 		array(
 			'label' => 'Facebook URL',
-			'section' => 'contact_information',
+			'section' => 'social_media',
 			'type' => 'text'
 		)
 	);
@@ -248,7 +257,7 @@ function bones_contact_information($wp_customize) {
 		'instagram_username',
 		array(
 			'label' => 'Instagram Username',
-			'section' => 'contact_information',
+			'section' => 'social_media',
 			'type' => 'text'
 		)
 	);
@@ -260,7 +269,7 @@ function bones_contact_information($wp_customize) {
 		'youtube_url',
 		array(
 			'label' => 'Youtube URL',
-			'section' => 'contact_information',
+			'section' => 'social_media',
 			'type' => 'text'
 		)
 	);
@@ -272,7 +281,7 @@ function bones_contact_information($wp_customize) {
 		'linkedin_url',
 		array(
 			'label' => 'LinkedIn URL',
-			'section' => 'contact_information',
+			'section' => 'social_media',
 			'type' => 'text'
 		)
 	);
