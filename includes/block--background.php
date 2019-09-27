@@ -12,26 +12,26 @@
 	$backgroundImageDesktopLarge = wp_get_attachment_image_src($image_id, 'hero-desktop-large');  
 ?>
 <style type="text/css" media="screen">
-	#container #intro-block:not(.leader-default){
+	#container #intro-block{
 		background-image: url(<?php echo $backgroundImageMobile[0]; ?>);
 	}
 	@media (min-width: 768px) and (max-width: 1024px) {
-		#container #intro-block:not(.leader-default){
+		#container #intro-block{
 			background-image: url(<?php echo $backgroundImageIpad[0]; ?>);
 		}
 	}
 	@media (min-width: 1025px) {
-		#container #intro-block:not(.leader-default){
+		#container #intro-block{
 			background-image: url(<?php echo $backgroundImageDesktopSmall[0]; ?>);
 		}	
 	}
 	@media (min-width: 1441px) {
-		#container #intro-block:not(.leader-default){
+		#container #intro-block{
 			background-image: url(<?php echo $backgroundImageDesktop[0]; ?>);
 		}	
 	}
 	@media (min-width: 2000px) {
-		#container #intro-block:not(.leader-default){
+		#container #intro-block{
 			background-image: url(<?php echo $backgroundImageDesktopLarge[0]; ?>);
 		}	
 	}
