@@ -42,8 +42,29 @@ require_once('library/admin.php'); // this comes turned off by default
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size('bones-thumb-600', 600, 150, true);
-add_image_size('bones-thumb-300', 300, 100, true);
+add_image_size('image-150', 150, 112, true);
+add_image_size('image-300', 300, 225, true);
+add_image_size('image-600', 600, 450, true);
+add_image_size('image-800', 800, 600, true);
+add_image_size('image-1200', 1200, 800, true);
+add_image_size('image-1600', 1600, 1200, true);
+
+add_image_size('image-150-no_crop', 150, 112, false);
+add_image_size('image-300-no_crop', 300, 225, false);
+add_image_size('image-600-no_crop', 600, 450, false);
+add_image_size('image-800-no_crop', 800, 600, false);
+add_image_size('image-1200-no_crop', 1200, 800, false);
+add_image_size('image-1600-no_crop', 1600, 1200, false);
+
+add_image_size('image-150-square', 150, 150, true);
+add_image_size('image-300-square', 300, 300, true);
+add_image_size('image-600-square', 600, 600, true);
+add_image_size('image-800-square', 800, 800, true);
+add_image_size('image-1200-square', 1200, 1200, true);
+add_image_size('image-1600-square', 1600, 1200, true);
+
+
+// these might need adjusting
 
 add_image_size('hero-mobile', 600, 360, true);
 add_image_size('hero-ipad', 1000, 650, true);
@@ -51,12 +72,17 @@ add_image_size('hero-desktop-small', 1500, 900, true);
 add_image_size('hero-desktop', 2000, 1300, true);
 add_image_size('hero-desktop-large', 3000, 2250, true);
 
+
+
 /*
 to add more sizes, simply copy a line from above
 and change the dimensions & name. As long as you
 upload a "featured image" as large as the biggest
 set width or height, all the other sizes will be
 auto-cropped.
+
+If true, the image will be cropped to fit
+If false, images will be scaled, not cropped
 
 To call a different size, simply change the text
 inside the thumbnail function.
@@ -75,8 +101,15 @@ add_filter('image_size_names_choose', 'bones_custom_image_sizes');
 
 function bones_custom_image_sizes($sizes) {
 	return array_merge($sizes, array(
-		'bones-thumb-600' => '600px by 150px',
-		'bones-thumb-300' => '300px by 100px',
+		'image-150' => 'Small',
+		'image-600' => ' Medium',
+		'image-1200' => ' Large',
+		'image-150-no_crop' => 'Small Uncropped',
+		'image-600-no_crop' => ' Medium Uncropped',
+		'image-1200-no_crop' => ' Large Uncropped',
+		'image-150-square' => 'Small Square',
+		'image-600-square' => ' Medium Square',
+		'image-1200-square' => ' Large Square'
 	));
 }
 
@@ -259,16 +292,7 @@ function bones_section_maker($atts, $content = '&nbsp;') {
 add_shortcode('section', 'bones_section_maker');
 
 
-// Register a social Block
-add_action('acf/init', function () {
-	acf_register_block(array(
-		'name'        => 'social-block',
-		'title'       => __('Social Icons'),
-		'mode' => 'preview', 
-		'description'   => __('Get Social!'),
-		'render_template' => 'includes/block--social.php'
-	));
-});
+
 
 /**
  * Get an attachment ID given a URL.
