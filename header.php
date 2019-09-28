@@ -39,7 +39,7 @@
 	<body <?php body_class(); ?>>
 		<div id="container">
 			<header id="header">
-				<div class="wrap header-top grid">
+				<div class="wrap header--top">
 					<p class="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<nav class="header--navigation">
 						<?php bones_header_nav(); ?>

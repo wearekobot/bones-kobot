@@ -209,8 +209,10 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __('The Main Menu', 'bonestheme'),   // main nav in header
-			'footer-links' => __('Footer Links', 'bonestheme') // secondary nav in footer
+			'main-nav' => __('Header Menu', 'bonestheme'),   // main nav in header
+			'main-nav-minor' => __('Header Minor Menu', 'bonestheme'),   // main nav in header
+			'footer-nav' => __('Footer Menu', 'bonestheme'), // secondary nav in footer
+			'footer-nav-minor' => __('Footer Minor Menu', 'bonestheme') // secondary nav in footer
 		)
 	);
 } /* end bones theme support */
@@ -227,8 +229,8 @@ function bones_header_nav() {
 		'container' => false,                           // remove nav container
 		'container_class' => 'menu',           // class of container (should you choose to use it)
 		'menu' => __('Header Menu', 'bonestheme'),  // nav name
-		'menu_class' => 'nav header-nav',         // adding custom nav class
-		'theme_location' => 'main-nav',                 // where it's located in the theme
+		'menu_class' => 'header-nav',         // adding custom nav class
+		'theme_location' => 'header-nav',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
 		'link_before' => '',                            // before each link
@@ -245,8 +247,8 @@ function bones_header_nav_minor() {
 		'container' => false,                           // remove nav container
 		'container_class' => 'header--navigation_minor',   // class of container (should you choose to use it)
 		'menu' => __('Header Minor Menu', 'bonestheme'),  // nav name
-		'menu_class' => 'nav header-nav-minor',         // adding custom nav class
-		'theme_location' => 'header-minor-nav',         // where it's located in the theme
+		'menu_class' => 'header-nav-minor',         // adding custom nav class
+		'theme_location' => 'header-nav-minor',         // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
 		'link_before' => '',                            // before each link
@@ -264,7 +266,7 @@ function bones_footer_nav() {
 		'container' => '',                              // remove nav container
 		'container_class' => 'footer-links',   // class of container (should you choose to use it)
 		'menu' => __('Footer Menu', 'bonestheme'),   // nav name
-		'menu_class' => 'nav footer-nav',      // adding custom nav class
+		'menu_class' => 'footer-nav',      // adding custom nav class
 		'theme_location' => 'footer-nav',             // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
@@ -282,7 +284,7 @@ function bones_footer_nav_minor() {
 		'container' => '',                              // remove nav container
 		'container_class' => 'footer--secondary_links',   // class of container (should you choose to use it)
 		'menu' => __('Footer Minor Menu', 'bonestheme'),   // nav name
-		'menu_class' => 'nav footer-nav-minor',      // adding custom nav class
+		'menu_class' => 'footer-nav-minor',      // adding custom nav class
 		'theme_location' => 'footer-nav-minor',             // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
@@ -302,7 +304,7 @@ function bones_footer_nav_minor() {
 function bones_main_nav_fallback() {
 	wp_page_menu(array(
 		'show_home' => true,
-		'menu_class' => 'nav top-nav clearfix',      // adding custom nav class
+		'menu_class' => 'header-nav',      // adding custom nav class
 		'include'     => '',
 		'exclude'     => '',
 		'echo'        => true,
@@ -314,6 +316,15 @@ function bones_main_nav_fallback() {
 // this is the fallback for footer menu
 function bones_footer_links_fallback() {
 	/* you can put a default here if you like */
+	wp_page_menu(array(
+		'show_home' => true,
+		'menu_class' => 'footer-nav',      // adding custom nav class
+		'include'     => '',
+		'exclude'     => '',
+		'echo'        => true,
+		'link_before' => '',                            // before each link
+		'link_after' => ''                             // after each link
+	));
 }
 
 
