@@ -94,7 +94,7 @@ function bones_manual_dashboard_widget() {
 // Kobot widget
 function bones_Kobot_dashboard_widget() {
 	echo '
-	<p>This site was lovingly built by Bryan Kulba, Stefan Duret, Mariah Barnaby-Norris and Jodie McRobbie at Kobot Industries Ltd. in Edmonton, Alberta</p>
+	<p>This site was lovingly built by Bryan Kulba, Stefan Duret, Jodie McRobbie and Jessica Tang at Kobot Industries Ltd. in Edmonton, Alberta</p>
 
 	';
 }

@@ -97,6 +97,20 @@ You can change the names and dimensions to whatever
 you like. Enjoy!
 */
 
+/* Add the following code in the theme's functions.php and disable any unset function as required */
+function remove_default_image_sizes( $sizes ) {
+  
+  /* Default WordPress */
+  unset( $sizes[ 'thumbnail' ]);          // Remove Thumbnail (150 x 150 hard cropped)
+  unset( $sizes[ 'medium' ]);          // Remove Medium resolution (300 x 300 max height 300px)
+  unset( $sizes[ 'medium_large' ]);    // Remove Medium Large (added in WP 4.4) resolution (768 x 0 infinite height)
+  unset( $sizes[ 'large' ]);           // Remove Large resolution (1024 x 1024 max height 1024px)
+  
+
+  return $sizes;
+}
+add_filter( 'intermediate_image_sizes_advanced', 'remove_default_image_sizes' );
+
 add_filter('image_size_names_choose', 'bones_custom_image_sizes');
 
 function bones_custom_image_sizes($sizes) {
@@ -104,7 +118,7 @@ function bones_custom_image_sizes($sizes) {
 		'image-150' => 'Small',
 		'image-600' => ' Medium',
 		'image-1200' => ' Large',
-		'image-150-no_crop' => 'Small Uncropped',
+		'image-150-no_crop' => 'Small_Uncropped',
 		'image-600-no_crop' => ' Medium Uncropped',
 		'image-1200-no_crop' => ' Large Uncropped',
 		'image-150-square' => 'Small Square',
@@ -340,3 +354,24 @@ function bones_get_attachment_id($url) {
 }
 // gutenberg wide images
 add_theme_support( 'align-wide' );
+
+// retrieves the attachment ID from the file URL
+function get_placeholder_image_id($image_url) {
+    global $wpdb;
+    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
+        return $attachment[0]; 
+};
+
+// image generator for blog articles, and other index stuff
+function generate_thumbnail_for_article($image_size){
+	$placeholder_image = get_theme_mod('placeholder_image');
+	if (has_post_thumbnail()) {
+		the_post_thumbnail($image_size);
+	} elseif((isset($placeholder_image) && !empty($placeholder_image)) ) {
+		$image_id = get_placeholder_image_id($placeholder_image);
+		echo wp_get_attachment_image($image_id, $image_size);
+	} else {
+		echo '<img src="' . get_template_directory_uri() . '/images/blog-placeholder.jpg" alt="">';
+	}
+}
+

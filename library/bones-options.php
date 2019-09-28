@@ -8,57 +8,6 @@
 
 function bones_contact_information($wp_customize) {
 	
-	// $wp_customize->add_section(
-	// 	'front_page',
-	// 	array(
-	// 		'title' => 'Front Page',
-	// 		'description' => __('front page stuff'),
-	// 		'priority' => 5
-	// 	)
-	// );
-	
-	// $wp_customize->add_setting(
-	// 	'image_1',
-	// 	array(
-	// 		'sanitize_callback' => 'sanitize_text_field'
-	// 	)
-	// );
-	// $wp_customize->add_control(
-	// 	new WP_Customize_Upload_Control(
-	// 	$wp_customize, 
-	// 	'image_1', 
-	// 	array(
-	// 		'label'      => 'Image 1',
-	// 		'section'    => 'front_page',
-	// 		'settings'   => 'image_1',
-	// 	)) 
-	// );
-	
-	// $wp_customize->add_setting(
-	// 	'image_2',
-	// 	array(
-	// 		'sanitize_callback' => 'sanitize_text_field'
-	// 	)
-	// );
-	// $wp_customize->add_control(
-	// 	new WP_Customize_Upload_Control(
-	// 	$wp_customize, 
-	// 	'image_2', 
-	// 	array(
-	// 		'label'      => 'Image 2',
-	// 		'section'    => 'front_page',
-	// 		'settings'   => 'image_2',
-	// 	)) 
-	// );
-	
-	// $wp_customize->add_control(
-	// 	'business_name',
-	// 	array(
-	// 		'label' => 'Business Name',
-	// 		'section' => 'front_page',
-	// 		'type' => 'text'
-	// 	)
-	// );
 	
 	$wp_customize->add_section(
 		'address_information',
@@ -284,6 +233,31 @@ function bones_contact_information($wp_customize) {
 			'section' => 'social_media',
 			'type' => 'text'
 		)
+	);
+	$wp_customize->add_section(
+		'theme_defaults',
+		array(
+			'title' => 'Theme Defaults',
+			'description' => __('These are bits and bobs to make the theme run. Don\'t mess with this if you are unsure of what you are doing'),
+			'priority' => 5
+		)
+	);
+
+	$wp_customize->add_setting(
+		'placeholder_image',
+		array(
+			'sanitize_callback' => 'sanitize_text_field'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Upload_Control(
+		$wp_customize, 
+		'placeholder_image', 
+		array(
+			'label'      => 'Placeholder Image',
+			'section'    => 'theme_defaults',
+			'settings'   => 'placeholder_image',
+		)) 
 	);
 	
 }

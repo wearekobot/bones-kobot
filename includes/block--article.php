@@ -1,11 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class("card card_blog card_image");?> role="article">
 	<div class="block--image">
 		<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail('hero-mobile'); ?>
-			<?php else: ?>
-				<img src="<?php echo get_template_directory_uri(); ?>/images/blog-placeholder.jpg" alt="">
-			<?php endif; ?>
+			<?php generate_thumbnail_for_article('image-600') ?>
 		</a>
 	</div>
 	<div class="block--content">

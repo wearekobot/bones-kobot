@@ -1,10 +1,12 @@
 <?php 
+
+	$placeholder_image = get_theme_mod('placeholder_image');
+
 	if (has_post_thumbnail()) {
 		$image_id = get_post_thumbnail_id();
-	} else {
-		$image_id = bones_get_attachment_id(home_url() . '/app/uploads/bgnd__default.jpg');
-	}
-	
+	} elseif((isset($placeholder_image) && !empty($placeholder_image)) ) {
+		$image_id = get_placeholder_image_id($placeholder_image);
+	}	
 	$backgroundImageMobile = wp_get_attachment_image_src($image_id, 'hero-mobile');
 	$backgroundImageIpad = wp_get_attachment_image_src($image_id, 'hero-ipad');
 	$backgroundImageDesktopSmall = wp_get_attachment_image_src($image_id, 'hero-desktop-small');
