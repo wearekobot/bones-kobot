@@ -42,7 +42,7 @@
 				<div class="wrap header-top grid">
 					<p class="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<nav class="header--navigation">
-						<?php bones_main_nav(); ?>
+						<?php bones_header_nav(); ?>
 						<div class="navHamburger">&equiv;</div>
 					</nav>
 				</div>

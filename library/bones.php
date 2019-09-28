@@ -221,13 +221,13 @@ MENUS & NAVIGATION
 *********************/
 
 // the main menu
-function bones_main_nav() {
+function bones_header_nav() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
 		'container' => false,                           // remove nav container
 		'container_class' => 'menu',           // class of container (should you choose to use it)
-		'menu' => __('The Main Menu', 'bonestheme'),  // nav name
-		'menu_class' => 'nav top-nav',         // adding custom nav class
+		'menu' => __('Header Menu', 'bonestheme'),  // nav name
+		'menu_class' => 'nav header-nav',         // adding custom nav class
 		'theme_location' => 'main-nav',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
@@ -238,15 +238,34 @@ function bones_main_nav() {
 	));
 } /* end bones main nav */
 
+// the Header Minor Menu
+function bones_header_nav_minor() {
+	// display the wp3 menu if available
+	wp_nav_menu(array(
+		'container' => false,                           // remove nav container
+		'container_class' => 'header--navigation_minor',   // class of container (should you choose to use it)
+		'menu' => __('Header Minor Menu', 'bonestheme'),  // nav name
+		'menu_class' => 'nav header-nav-minor',         // adding custom nav class
+		'theme_location' => 'header-minor-nav',         // where it's located in the theme
+		'before' => '',                                 // before the menu
+		'after' => '',                                  // after the menu
+		'link_before' => '',                            // before each link
+		'link_after' => '',                             // after each link
+		'depth' => 0,                                   // limit the depth of the nav
+		'fallback_cb' => 'bones_main_nav_fallback'      // fallback function
+	));
+} /* end bones main nav */
+
+
 // the footer menu (should you choose to use one)
-function bones_footer_links() {
+function bones_footer_nav() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
 		'container' => '',                              // remove nav container
 		'container_class' => 'footer-links',   // class of container (should you choose to use it)
-		'menu' => __('Footer Links', 'bonestheme'),   // nav name
+		'menu' => __('Footer Menu', 'bonestheme'),   // nav name
 		'menu_class' => 'nav footer-nav',      // adding custom nav class
-		'theme_location' => 'footer-links',             // where it's located in the theme
+		'theme_location' => 'footer-nav',             // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
 		'link_before' => '',                            // before each link
@@ -255,6 +274,29 @@ function bones_footer_links() {
 		'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
 	));
 } /* end bones footer link */
+
+// the footer Secondary menu (should you choose to use one)
+function bones_footer_nav_minor() {
+	// display the wp3 menu if available
+	wp_nav_menu(array(
+		'container' => '',                              // remove nav container
+		'container_class' => 'footer--secondary_links',   // class of container (should you choose to use it)
+		'menu' => __('Footer Minor Menu', 'bonestheme'),   // nav name
+		'menu_class' => 'nav footer-nav-minor',      // adding custom nav class
+		'theme_location' => 'footer-nav-minor',             // where it's located in the theme
+		'before' => '',                                 // before the menu
+		'after' => '',                                  // after the menu
+		'link_before' => '',                            // before each link
+		'link_after' => '',                             // after each link
+		'depth' => 0,                                   // limit the depth of the nav
+		'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
+	));
+} /* end bones footer link */
+
+
+
+
+
 
 // this is the fallback for header menu
 function bones_main_nav_fallback() {
@@ -273,6 +315,9 @@ function bones_main_nav_fallback() {
 function bones_footer_links_fallback() {
 	/* you can put a default here if you like */
 }
+
+
+
 
 /*********************
 RELATED POSTS FUNCTION
