@@ -18,7 +18,15 @@
 		
 		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
 		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/images/apple-icon-touch.png">
-		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
+		<?php 
+			$favicon = get_theme_mod('favicon'); 
+			if ((isset($favicon) && !empty($favicon))){
+				$favicon_url = $favicon;
+			} else {
+				$favicon_url = get_template_directory_uri().'/favicon.png';
+			}
+		?>
+		<link rel="icon" href="<?php echo $favicon_url; ?>">
 		<!--[if IE]>
 			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 		<![endif]-->

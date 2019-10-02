@@ -7,8 +7,18 @@
 ------------------------------------------------------- */ 
 
 function bones_contact_information($wp_customize) {
+		
+	// kill defaults
+	$wp_customize->remove_section( 'colors');
+	$wp_customize->remove_section( 'background_image');
+	$wp_customize->remove_section( 'widgets');
+	$wp_customize->remove_section( 'static_front_page');
+	$wp_customize->remove_section( 'custom_css');
+	$wp_customize->remove_section( 'nav_menus');
+	$wp_customize->remove_section( 'title_tagline');
+
 	
-	
+	// add new ones
 	$wp_customize->add_section(
 		'address_information',
 		array(
@@ -257,6 +267,22 @@ function bones_contact_information($wp_customize) {
 			'label'      => 'Placeholder Image',
 			'section'    => 'theme_defaults',
 			'settings'   => 'placeholder_image',
+		)) 
+	);
+	$wp_customize->add_setting(
+		'favicon',
+		array(
+			'sanitize_callback' => 'sanitize_text_field'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Upload_Control(
+		$wp_customize, 
+		'favicon', 
+		array(
+			'label'      => 'Favicon icon (32x32 png)',
+			'section'    => 'theme_defaults',
+			'settings'   => 'favicon',
 		)) 
 	);
 	
