@@ -375,3 +375,9 @@ function generate_thumbnail_for_article($image_size){
 	}
 }
 
+
+
+add_action( 'admin_menu', 'linked_url' );
+function linked_url() {
+	add_menu_page( 'linked_url', 'Reusable Blocks', 'read', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22 );
+}
