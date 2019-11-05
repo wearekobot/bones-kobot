@@ -183,6 +183,11 @@ function bones_theme_support() {
 		)
 	);
 
+	/**
+	 * Disable the custom color picker.
+	 */
+	add_theme_support( 'disable-custom-colors' );
+
 	// rss thingy
 	add_theme_support('automatic-feed-links');
 
