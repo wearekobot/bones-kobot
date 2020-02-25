@@ -9,13 +9,13 @@
 function bones_contact_information($wp_customize) {
 		
 	// kill defaults
-	$wp_customize->remove_section( 'colors');
-	$wp_customize->remove_section( 'background_image');
-	$wp_customize->remove_section( 'widgets');
-	$wp_customize->remove_section( 'static_front_page');
-	$wp_customize->remove_section( 'custom_css');
-	$wp_customize->remove_section( 'nav_menus');
-	$wp_customize->remove_section( 'title_tagline');
+	$wp_customize->remove_section('colors');
+	$wp_customize->remove_section('background_image');
+	$wp_customize->remove_section('widgets');
+	$wp_customize->remove_section('static_front_page');
+	$wp_customize->remove_section('custom_css');
+	$wp_customize->remove_section('nav_menus');
+	$wp_customize->remove_section('title_tagline');
 
 	
 	// add new ones

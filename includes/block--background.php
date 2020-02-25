@@ -4,8 +4,8 @@
 
 	if (has_post_thumbnail()) {
 		$image_id = get_post_thumbnail_id();
-	} elseif((isset($placeholder_image) && !empty($placeholder_image)) ) {
-		$image_id = get_placeholder_image_id($placeholder_image);
+	} elseif ((isset($placeholder_image) && !empty($placeholder_image))) {
+		$image_id = bones_get_attachment_id($placeholder_image);
 	}	
 	$backgroundImageMobile = wp_get_attachment_image_src($image_id, 'hero-mobile');
 	$backgroundImageIpad = wp_get_attachment_image_src($image_id, 'hero-ipad');
