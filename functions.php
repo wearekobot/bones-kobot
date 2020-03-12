@@ -61,7 +61,7 @@ add_image_size('image-300-square', 300, 300, true);
 add_image_size('image-600-square', 600, 600, true);
 add_image_size('image-800-square', 800, 800, true);
 add_image_size('image-1200-square', 1200, 1200, true);
-add_image_size('image-1600-square', 1600, 1200, true);
+add_image_size('image-1600-square', 1600, 1600, true);
 
 
 // these might need adjusting
