@@ -17,7 +17,7 @@
 			</p>
 			<h2>Contact</h2>
 			<ul>
-				<li><strong>Phone:</strong> <a href="tel:<?php echo $phone_number; ?>"><?php echo $phone_number; ?></a></li>
-				<li><strong>Fax:</strong> <?php echo $fax_number; ?></li>
-				<li><strong>Email:</strong> <a href="mailto:<?php echo $email_address; ?>"><?php echo $email_address; ?></a></li>
+				<?php if (isset($phone_number) && !empty($phone_number)) : ?><li><strong>Phone:</strong> <a href="tel:<?php echo $phone_number; ?>"><?php echo $phone_number; ?></a></li><?php endif; ?>
+				<?php if (isset($fax_number) && !empty($fax_number)) : ?><li><strong>Fax:</strong> <?php echo $fax_number; ?></li><?php endif; ?>
+				<?php if (isset($email_address) && !empty($email_address)) : ?><li><strong>Email:</strong> <a href="mailto:<?php echo $email_address; ?>"><?php echo $email_address; ?></a></li><?php endif; ?>
 			</ul>
