@@ -17,11 +17,9 @@
   "author": "Stefan Duret",
   "license": "BSD",
   "devDependencies": {
-    "autoprefixer": "^9.7.0",
+    "autoprefixer": "^9.7.5",
     "cssnano": "^4.1.10",
-    "grunt": "^1.0.4",
-    "grunt-coffeelint": "0.0.16",
-    "grunt-contrib-coffee": "^2.1.0",
+    "grunt": "^1.1.0",
     "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-imagemin": "^3.1.0",
