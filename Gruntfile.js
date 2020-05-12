@@ -14,10 +14,6 @@ module.exports = function(grunt) {
         files: ['scss/**/*.{scss,sass}'],
         tasks: ['compass', 'postcss']
       },
-      coffee: {
-        files: ['coffee/**/*.coffee'],
-        tasks: ['coffee:dist']
-      },
       js : {
         files : ['js/**/*.js'],
         tasks : [],
@@ -85,18 +81,6 @@ module.exports = function(grunt) {
       }
     },
     
-    coffee: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: 'coffee',
-          src: '**/*.coffee',
-          dest: 'js',
-          ext: '.js'
-        }]
-      }
-    },
-    
     uglify: {
       options: {
         // banner: '/*! <%= pkg.name %> lib - v<%= pkg.version %> -' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
@@ -144,7 +128,6 @@ module.exports = function(grunt) {
   // Build task
   grunt.registerTask('build', [ 
     'compass', 
-    'coffee', 
     'postcss',
     'imagemin:production', 
     'svgmin:production', 
