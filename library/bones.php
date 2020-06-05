@@ -214,8 +214,8 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __('Header Menu', 'bonestheme'),   // main nav in header
-			'main-nav-minor' => __('Header Minor Menu', 'bonestheme'),   // main nav in header
+			'header-nav' => __('Header Menu', 'bonestheme'),   // main nav in header
+			'header-nav-minor' => __('Header Minor Menu', 'bonestheme'),   // main nav in header
 			'footer-nav' => __('Footer Menu', 'bonestheme'), // secondary nav in footer
 			'footer-nav-minor' => __('Footer Minor Menu', 'bonestheme') // secondary nav in footer
 		)
