@@ -48,6 +48,7 @@ function bones_ahoy() {
 	add_filter('the_content', 'bones_filter_ptags_on_images');
 	// cleaning up excerpt
 	add_filter('excerpt_more', 'bones_excerpt_more');
+	add_filter('excerpt_length', 'bones_custom_excerpt_length', 999);
 
 } /* end bones ahoy */
 
@@ -92,8 +93,9 @@ function bones_rss_version() { return ''; }
 
 // remove WP version from scripts
 function bones_remove_wp_ver_css_js($src) {
-	if (strpos($src, 'ver='))
+	if (!strpos($src, 'bones/css/style.css') && !strpos($src, 'bones/js/scripts.js') && strpos($src, 'ver=')) {
 		$src = remove_query_arg('ver', $src);
+	}
 	return $src;
 }
 
@@ -131,7 +133,7 @@ function bones_scripts_and_styles() {
 		wp_register_script('bones-modernizr', get_stylesheet_directory_uri() . '/js/libs/modernizr.custom.min.js', array(), '2.5.3', false);
 
 		// register main stylesheet
-		wp_register_style('bones-stylesheet', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all');
+		wp_register_style('bones-stylesheet', get_stylesheet_directory_uri() . '/css/style.css', array(), filemtime(get_stylesheet_directory() . '/css/style.css'), 'all');
 
 		// ie-only style sheet
 		wp_register_style('bones-ie-only', get_stylesheet_directory_uri() . '/css/ie.css', array(), '');
@@ -408,6 +410,10 @@ function bones_excerpt_more($more) {
 	global $post;
 	// edit here if you like
 	return '...';
+}
+
+function bones_custom_excerpt_length($length) {
+	return 20;
 }
 
 /*
